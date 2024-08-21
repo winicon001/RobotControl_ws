@@ -1,0 +1,17 @@
+[9.543s] Invoking command in '/home/winicon/RobotControl_ws/build/robots_nav_contr': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
+[16.593s] running develop
+[19.950s] running egg_info
+[19.971s] writing robots_nav_contr.egg-info/PKG-INFO
+[19.971s] writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt
+[19.972s] writing entry points to robots_nav_contr.egg-info/entry_points.txt
+[19.972s] writing requirements to robots_nav_contr.egg-info/requires.txt
+[19.973s] writing top-level names to robots_nav_contr.egg-info/top_level.txt
+[20.042s] reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[20.046s] writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[20.057s] running build_ext
+[20.072s] Creating /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)
+[20.072s] Installing robots_nav_controller script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[20.073s] 
+[20.073s] Installed /home/winicon/RobotControl_ws/build/robots_nav_contr
+[20.073s] running symlink_data
+[20.559s] Invoked command in '/home/winicon/RobotControl_ws/build/robots_nav_contr' returned '0': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data

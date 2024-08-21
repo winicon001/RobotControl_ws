@@ -1,0 +1,16 @@
+[8.918s] Invoking command in '/home/winicon/RobotControl_ws/build/robots_navigationController': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_navigationController/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_navigationController/build --no-deps symlink_data
+[10.642s] running develop
+[11.526s] running egg_info
+[11.626s] writing robots_navigationController.egg-info/PKG-INFO
+[11.627s] writing dependency_links to robots_navigationController.egg-info/dependency_links.txt
+[11.629s] writing entry points to robots_navigationController.egg-info/entry_points.txt
+[11.630s] writing requirements to robots_navigationController.egg-info/requires.txt
+[11.631s] writing top-level names to robots_navigationController.egg-info/top_level.txt
+[11.636s] reading manifest file 'robots_navigationController.egg-info/SOURCES.txt'
+[11.639s] writing manifest file 'robots_navigationController.egg-info/SOURCES.txt'
+[11.651s] running build_ext
+[11.652s] Creating /home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages/robots-navigationController.egg-link (link to .)
+[11.657s] 
+[11.657s] Installed /home/winicon/RobotControl_ws/build/robots_navigationController
+[11.658s] running symlink_data
+[12.135s] Invoked command in '/home/winicon/RobotControl_ws/build/robots_navigationController' returned '0': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_navigationController/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_navigationController/build --no-deps symlink_data

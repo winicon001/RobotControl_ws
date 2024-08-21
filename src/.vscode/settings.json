@@ -1,0 +1,19 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/winicon/ros/ros2_ws/install/talker_listener/lib/python3.10/site-packages",
+        "/home/winicon/robot_ws/build/serial_motor_demo",
+        "/home/winicon/robot_ws/install/serial_motor_demo/lib/python3.10/site-packages",
+        "/home/winicon/robot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/winicon/ros/ros2_ws/install/talker_listener/lib/python3.10/site-packages",
+        "/home/winicon/robot_ws/build/serial_motor_demo",
+        "/home/winicon/robot_ws/install/serial_motor_demo/lib/python3.10/site-packages",
+        "/home/winicon/robot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "ros.distro": "humble"
+}

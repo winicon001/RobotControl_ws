@@ -1,0 +1,92 @@
+[0.000000] (-) TimerEvent: {}
+[0.000774] (robots_nav_contr) JobQueued: {'identifier': 'robots_nav_contr', 'dependencies': OrderedDict()}
+[0.002191] (robots_nav_contr) JobStarted: {'identifier': 'robots_nav_contr'}
+[0.103257] (-) TimerEvent: {}
+[0.213478] (-) TimerEvent: {}
+[0.318953] (-) TimerEvent: {}
+[0.419841] (-) TimerEvent: {}
+[0.525373] (-) TimerEvent: {}
+[0.627298] (-) TimerEvent: {}
+[0.739589] (-) TimerEvent: {}
+[0.842215] (-) TimerEvent: {}
+[0.943129] (-) TimerEvent: {}
+[1.043848] (-) TimerEvent: {}
+[1.144499] (-) TimerEvent: {}
+[1.255023] (-) TimerEvent: {}
+[1.371208] (-) TimerEvent: {}
+[1.474241] (-) TimerEvent: {}
+[1.576953] (-) TimerEvent: {}
+[1.683430] (-) TimerEvent: {}
+[1.941488] (-) TimerEvent: {}
+[2.064027] (-) TimerEvent: {}
+[2.164659] (-) TimerEvent: {}
+[2.266502] (-) TimerEvent: {}
+[2.367060] (-) TimerEvent: {}
+[2.469825] (-) TimerEvent: {}
+[2.572122] (-) TimerEvent: {}
+[2.677855] (-) TimerEvent: {}
+[2.783017] (-) TimerEvent: {}
+[2.884070] (-) TimerEvent: {}
+[3.009305] (-) TimerEvent: {}
+[3.110530] (-) TimerEvent: {}
+[3.226727] (-) TimerEvent: {}
+[3.400244] (-) TimerEvent: {}
+[3.532873] (-) TimerEvent: {}
+[3.645524] (-) TimerEvent: {}
+[3.748104] (-) TimerEvent: {}
+[3.863536] (-) TimerEvent: {}
+[3.964851] (-) TimerEvent: {}
+[4.068245] (-) TimerEvent: {}
+[4.169163] (-) TimerEvent: {}
+[4.269451] (-) TimerEvent: {}
+[4.369801] (-) TimerEvent: {}
+[4.470456] (-) TimerEvent: {}
+[4.572219] (-) TimerEvent: {}
+[4.672948] (-) TimerEvent: {}
+[4.773615] (-) TimerEvent: {}
+[4.874780] (-) TimerEvent: {}
+[4.975232] (-) TimerEvent: {}
+[5.080839] (-) TimerEvent: {}
+[5.181804] (-) TimerEvent: {}
+[5.282495] (-) TimerEvent: {}
+[5.384404] (-) TimerEvent: {}
+[5.486235] (-) TimerEvent: {}
+[5.516000] (robots_nav_contr) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/winicon/RobotControl_ws/build/robots_nav_contr/build', '--no-deps', 'symlink_data'], 'cwd': '/home/winicon/RobotControl_ws/build/robots_nav_contr', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_GB:en', 'USER': 'winicon', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/winicon/robot_ws/install/serial_motor_demo_msgs/lib:/home/winicon/robot_ws/install/serial/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/winicon', 'OLDPWD': '/home/winicon', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '2891', 'SYSTEMD_EXEC_PID': '3088', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '6724', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/winicon/RobotControl_ws/install:/home/winicon/ros/ros2_ws/install:/home/winicon/robot_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'winicon', 'JOURNAL_STREAM': '8:15810', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'winicon', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/icon-LinuxBox2:@/tmp/.ICE-unix/3048,unix/icon-LinuxBox2:/tmp/.ICE-unix/3048', 'INVOCATION_ID': '0e459ee9eaca46b6b464c2bed877fd1b', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.0NWOS2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/winicon/RobotControl_ws/install/robots_navigationController:/home/winicon/RobotControl_ws/install/robots_nav_contr:/home/winicon/ros/ros2_ws/install/talker_listener:/home/winicon/robot_ws/install/serial_motor_demo:/home/winicon/robot_ws/install/serial_motor_demo_msgs:/home/winicon/robot_ws/install/serial:/home/winicon/robot_ws/install/my_bot:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:69b9bece-9760-468a-b9f4-b59718a83ea6', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://localhost:11311', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GJS_DEBUG_OUTPUT': 'stderr', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/winicon/RobotControl_ws/build/robots_nav_contr', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:/home/winicon/RobotControl_ws/build/robots_navigationController:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:/home/winicon/RobotControl_ws/build/robots_nav_contr:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:/home/winicon/ros/ros2_ws/install/talker_listener/lib/python3.10/site-packages:/home/winicon/robot_ws/build/serial_motor_demo:/home/winicon/robot_ws/install/serial_motor_demo/lib/python3.10/site-packages:/home/winicon/robot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/winicon/robot_ws/install/serial_motor_demo_msgs:/home/winicon/robot_ws/install/serial:/home/winicon/robot_ws/install/my_bot'}, 'shell': False}
+[5.588214] (-) TimerEvent: {}
+[5.691101] (-) TimerEvent: {}
+[5.795779] (-) TimerEvent: {}
+[5.898268] (-) TimerEvent: {}
+[5.999843] (-) TimerEvent: {}
+[6.106010] (-) TimerEvent: {}
+[6.213754] (-) TimerEvent: {}
+[6.320877] (-) TimerEvent: {}
+[6.430089] (-) TimerEvent: {}
+[6.455078] (robots_nav_contr) StdoutLine: {'line': b'running develop\n'}
+[6.537935] (-) TimerEvent: {}
+[6.643025] (-) TimerEvent: {}
+[6.803867] (-) TimerEvent: {}
+[6.977415] (-) TimerEvent: {}
+[7.084029] (-) TimerEvent: {}
+[7.184834] (-) TimerEvent: {}
+[7.290962] (-) TimerEvent: {}
+[7.396285] (-) TimerEvent: {}
+[7.495502] (robots_nav_contr) StdoutLine: {'line': b'running egg_info\n'}
+[7.496781] (-) TimerEvent: {}
+[7.497515] (robots_nav_contr) StdoutLine: {'line': b'writing robots_nav_contr.egg-info/PKG-INFO\n'}
+[7.498387] (robots_nav_contr) StdoutLine: {'line': b'writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt\n'}
+[7.499732] (robots_nav_contr) StdoutLine: {'line': b'writing entry points to robots_nav_contr.egg-info/entry_points.txt\n'}
+[7.502022] (robots_nav_contr) StdoutLine: {'line': b'writing requirements to robots_nav_contr.egg-info/requires.txt\n'}
+[7.503986] (robots_nav_contr) StdoutLine: {'line': b'writing top-level names to robots_nav_contr.egg-info/top_level.txt\n'}
+[7.510494] (robots_nav_contr) StdoutLine: {'line': b"reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[7.514315] (robots_nav_contr) StdoutLine: {'line': b"writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[7.518026] (robots_nav_contr) StdoutLine: {'line': b'running build_ext\n'}
+[7.519625] (robots_nav_contr) StdoutLine: {'line': b'Creating /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)\n'}
+[7.522469] (robots_nav_contr) StdoutLine: {'line': b'Installing robot_command_receiver script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[7.523166] (robots_nav_contr) StdoutLine: {'line': b'Installing robots_nav_controller script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[7.523294] (robots_nav_contr) StdoutLine: {'line': b'\n'}
+[7.523375] (robots_nav_contr) StdoutLine: {'line': b'Installed /home/winicon/RobotControl_ws/build/robots_nav_contr\n'}
+[7.523451] (robots_nav_contr) StdoutLine: {'line': b'running symlink_data\n'}
+[7.598266] (-) TimerEvent: {}
+[7.612957] (robots_nav_contr) CommandEnded: {'returncode': 0}
+[7.678099] (robots_nav_contr) JobEnded: {'identifier': 'robots_nav_contr', 'rc': 0}
+[7.679486] (-) EventReactorShutdown: {}

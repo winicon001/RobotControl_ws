@@ -1,0 +1,17 @@
+[22.648s] Invoking command in '/home/winicon/RobotControl_ws/build/robots_navigationController': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_navigationController/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_navigationController/build --no-deps symlink_data
+[24.200s] running develop
+[25.890s] running egg_info
+[25.891s] writing robots_navigationController.egg-info/PKG-INFO
+[25.894s] writing dependency_links to robots_navigationController.egg-info/dependency_links.txt
+[25.901s] writing entry points to robots_navigationController.egg-info/entry_points.txt
+[25.902s] writing requirements to robots_navigationController.egg-info/requires.txt
+[25.906s] writing top-level names to robots_navigationController.egg-info/top_level.txt
+[25.921s] reading manifest file 'robots_navigationController.egg-info/SOURCES.txt'
+[25.929s] writing manifest file 'robots_navigationController.egg-info/SOURCES.txt'
+[25.980s] running build_ext
+[25.982s] Creating /home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages/robots-navigationController.egg-link (link to .)
+[25.986s] Installing robot_navigationcontroller script to /home/winicon/RobotControl_ws/install/robots_navigationController/lib/robots_navigationController
+[25.993s] 
+[25.995s] Installed /home/winicon/RobotControl_ws/build/robots_navigationController
+[25.995s] running symlink_data
+[26.327s] Invoked command in '/home/winicon/RobotControl_ws/build/robots_navigationController' returned '0': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_navigationController/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_navigationController/build --no-deps symlink_data

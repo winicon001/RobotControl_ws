@@ -1,0 +1,19 @@
+[1.427s] Invoking command in '/home/winicon/RobotControl_ws/build/robots_nav_contr': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
+[2.149s] running develop
+[2.453s] running egg_info
+[2.453s] writing robots_nav_contr.egg-info/PKG-INFO
+[2.454s] writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt
+[2.455s] writing entry points to robots_nav_contr.egg-info/entry_points.txt
+[2.456s] writing requirements to robots_nav_contr.egg-info/requires.txt
+[2.457s] writing top-level names to robots_nav_contr.egg-info/top_level.txt
+[2.461s] reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[2.463s] writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[2.469s] running build_ext
+[2.470s] Creating /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)
+[2.472s] Installing robot_command_receiver script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[2.473s] Installing robots_nav_controller script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[2.473s] Installing robots_serial_commands script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[2.473s] 
+[2.474s] Installed /home/winicon/RobotControl_ws/build/robots_nav_contr
+[2.474s] running symlink_data
+[2.530s] Invoked command in '/home/winicon/RobotControl_ws/build/robots_nav_contr' returned '0': PYTHONPATH=/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/winicon/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data

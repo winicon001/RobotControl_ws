@@ -1,0 +1,3 @@
+[console_scripts]
+robot_navigationcontroller = robots_navigationController.robotnavcontroller:main
+

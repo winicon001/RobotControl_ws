@@ -1,0 +1,198 @@
+[0.000000] (-) TimerEvent: {}
+[0.005340] (robots_nav_contr) JobQueued: {'identifier': 'robots_nav_contr', 'dependencies': OrderedDict()}
+[0.016167] (robots_nav_contr) JobStarted: {'identifier': 'robots_nav_contr'}
+[0.119667] (-) TimerEvent: {}
+[0.264393] (-) TimerEvent: {}
+[0.406797] (-) TimerEvent: {}
+[0.533382] (-) TimerEvent: {}
+[0.743346] (-) TimerEvent: {}
+[0.856474] (-) TimerEvent: {}
+[0.958445] (-) TimerEvent: {}
+[1.070964] (-) TimerEvent: {}
+[1.180016] (-) TimerEvent: {}
+[1.284519] (-) TimerEvent: {}
+[1.386878] (-) TimerEvent: {}
+[1.490540] (-) TimerEvent: {}
+[1.592291] (-) TimerEvent: {}
+[1.695380] (-) TimerEvent: {}
+[1.797968] (-) TimerEvent: {}
+[1.906299] (-) TimerEvent: {}
+[2.009137] (-) TimerEvent: {}
+[2.114405] (-) TimerEvent: {}
+[2.218042] (-) TimerEvent: {}
+[2.322394] (-) TimerEvent: {}
+[2.425412] (-) TimerEvent: {}
+[2.531155] (-) TimerEvent: {}
+[2.635495] (-) TimerEvent: {}
+[2.739827] (-) TimerEvent: {}
+[2.846520] (-) TimerEvent: {}
+[2.951306] (-) TimerEvent: {}
+[3.100534] (-) TimerEvent: {}
+[3.213335] (-) TimerEvent: {}
+[3.358073] (-) TimerEvent: {}
+[3.521728] (-) TimerEvent: {}
+[3.633272] (-) TimerEvent: {}
+[3.741259] (-) TimerEvent: {}
+[3.916078] (-) TimerEvent: {}
+[4.040089] (-) TimerEvent: {}
+[4.191094] (-) TimerEvent: {}
+[4.331960] (-) TimerEvent: {}
+[4.438526] (-) TimerEvent: {}
+[4.562224] (-) TimerEvent: {}
+[4.689097] (-) TimerEvent: {}
+[4.858073] (-) TimerEvent: {}
+[5.090128] (-) TimerEvent: {}
+[5.262267] (-) TimerEvent: {}
+[5.390295] (-) TimerEvent: {}
+[5.493220] (-) TimerEvent: {}
+[5.594973] (-) TimerEvent: {}
+[5.696977] (-) TimerEvent: {}
+[5.802607] (-) TimerEvent: {}
+[5.928123] (-) TimerEvent: {}
+[6.069653] (-) TimerEvent: {}
+[6.203431] (-) TimerEvent: {}
+[6.305099] (-) TimerEvent: {}
+[6.408722] (-) TimerEvent: {}
+[6.513113] (-) TimerEvent: {}
+[6.615429] (-) TimerEvent: {}
+[6.717885] (-) TimerEvent: {}
+[6.821431] (-) TimerEvent: {}
+[6.924413] (-) TimerEvent: {}
+[7.028260] (-) TimerEvent: {}
+[7.130311] (-) TimerEvent: {}
+[7.234245] (-) TimerEvent: {}
+[7.336312] (-) TimerEvent: {}
+[7.438547] (-) TimerEvent: {}
+[7.541300] (-) TimerEvent: {}
+[7.644122] (-) TimerEvent: {}
+[7.749335] (-) TimerEvent: {}
+[7.852344] (-) TimerEvent: {}
+[7.955500] (-) TimerEvent: {}
+[8.057174] (-) TimerEvent: {}
+[8.158912] (-) TimerEvent: {}
+[8.260506] (-) TimerEvent: {}
+[8.362344] (-) TimerEvent: {}
+[8.465511] (-) TimerEvent: {}
+[8.572643] (-) TimerEvent: {}
+[8.673493] (-) TimerEvent: {}
+[8.776490] (-) TimerEvent: {}
+[8.878200] (-) TimerEvent: {}
+[8.985043] (-) TimerEvent: {}
+[9.086969] (-) TimerEvent: {}
+[9.188258] (-) TimerEvent: {}
+[9.290740] (-) TimerEvent: {}
+[9.393138] (-) TimerEvent: {}
+[9.500942] (-) TimerEvent: {}
+[9.550631] (robots_nav_contr) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/winicon/RobotControl_ws/build/robots_nav_contr/build', '--no-deps', 'symlink_data'], 'cwd': '/home/winicon/RobotControl_ws/build/robots_nav_contr', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_GB:en', 'USER': 'winicon', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/winicon/robot_ws/install/serial_motor_demo_msgs/lib:/home/winicon/robot_ws/install/serial/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/winicon', 'OLDPWD': '/home/winicon', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '2823', 'SYSTEMD_EXEC_PID': '2995', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '22644', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/winicon/RobotControl_ws/install:/home/winicon/ros/ros2_ws/install:/home/winicon/robot_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'winicon', 'JOURNAL_STREAM': '8:15061', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'winicon', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/icon-LinuxBox2:@/tmp/.ICE-unix/2966,unix/icon-LinuxBox2:/tmp/.ICE-unix/2966', 'INVOCATION_ID': 'fe2587ae71904bbc9a81a439515adf77', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.QAGNS2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/winicon/RobotControl_ws/install/robots_navigationController:/home/winicon/RobotControl_ws/install/robots_nav_contr:/home/winicon/ros/ros2_ws/install/talker_listener:/home/winicon/robot_ws/install/serial_motor_demo:/home/winicon/robot_ws/install/serial_motor_demo_msgs:/home/winicon/robot_ws/install/serial:/home/winicon/robot_ws/install/my_bot:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:93b79fe1-b8dd-4339-90a2-08d71c3d1562', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://localhost:11311', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GJS_DEBUG_OUTPUT': 'stderr', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/winicon/RobotControl_ws/build/robots_nav_contr', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:/home/winicon/RobotControl_ws/build/robots_navigationController:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:/home/winicon/RobotControl_ws/build/robots_nav_contr:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:/home/winicon/ros/ros2_ws/install/talker_listener/lib/python3.10/site-packages:/home/winicon/robot_ws/build/serial_motor_demo:/home/winicon/robot_ws/install/serial_motor_demo/lib/python3.10/site-packages:/home/winicon/robot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/winicon/robot_ws/install/serial_motor_demo_msgs:/home/winicon/robot_ws/install/serial:/home/winicon/robot_ws/install/my_bot'}, 'shell': False}
+[9.602573] (-) TimerEvent: {}
+[9.835682] (-) TimerEvent: {}
+[9.938467] (-) TimerEvent: {}
+[10.046299] (-) TimerEvent: {}
+[10.172811] (-) TimerEvent: {}
+[10.284289] (-) TimerEvent: {}
+[10.509427] (-) TimerEvent: {}
+[10.614912] (-) TimerEvent: {}
+[10.748503] (-) TimerEvent: {}
+[10.859442] (-) TimerEvent: {}
+[10.993590] (-) TimerEvent: {}
+[11.097509] (-) TimerEvent: {}
+[11.201331] (-) TimerEvent: {}
+[11.314669] (-) TimerEvent: {}
+[11.455362] (-) TimerEvent: {}
+[11.616559] (-) TimerEvent: {}
+[11.996579] (-) TimerEvent: {}
+[12.214484] (-) TimerEvent: {}
+[12.358887] (-) TimerEvent: {}
+[12.473520] (-) TimerEvent: {}
+[12.589676] (-) TimerEvent: {}
+[12.730306] (-) TimerEvent: {}
+[12.857632] (-) TimerEvent: {}
+[12.960508] (-) TimerEvent: {}
+[13.071934] (-) TimerEvent: {}
+[13.176432] (-) TimerEvent: {}
+[13.287924] (-) TimerEvent: {}
+[13.402107] (-) TimerEvent: {}
+[13.547648] (-) TimerEvent: {}
+[13.653773] (-) TimerEvent: {}
+[13.759500] (-) TimerEvent: {}
+[13.861620] (-) TimerEvent: {}
+[13.964967] (-) TimerEvent: {}
+[14.066302] (-) TimerEvent: {}
+[14.167218] (-) TimerEvent: {}
+[14.272642] (-) TimerEvent: {}
+[14.375217] (-) TimerEvent: {}
+[14.493169] (-) TimerEvent: {}
+[14.606737] (-) TimerEvent: {}
+[14.735225] (-) TimerEvent: {}
+[14.838044] (-) TimerEvent: {}
+[14.941206] (-) TimerEvent: {}
+[15.045186] (-) TimerEvent: {}
+[15.161408] (-) TimerEvent: {}
+[15.264064] (-) TimerEvent: {}
+[15.367340] (-) TimerEvent: {}
+[15.472686] (-) TimerEvent: {}
+[15.576494] (-) TimerEvent: {}
+[15.688184] (-) TimerEvent: {}
+[15.821516] (-) TimerEvent: {}
+[15.929643] (-) TimerEvent: {}
+[16.031100] (-) TimerEvent: {}
+[16.134985] (-) TimerEvent: {}
+[16.259321] (-) TimerEvent: {}
+[16.365654] (-) TimerEvent: {}
+[16.478403] (-) TimerEvent: {}
+[16.580225] (-) TimerEvent: {}
+[16.606291] (robots_nav_contr) StdoutLine: {'line': b'running develop\n'}
+[16.705977] (-) TimerEvent: {}
+[16.808709] (-) TimerEvent: {}
+[16.912606] (-) TimerEvent: {}
+[17.014494] (-) TimerEvent: {}
+[17.132895] (-) TimerEvent: {}
+[17.238256] (-) TimerEvent: {}
+[17.341477] (-) TimerEvent: {}
+[17.483528] (-) TimerEvent: {}
+[17.587768] (-) TimerEvent: {}
+[17.689542] (-) TimerEvent: {}
+[17.794655] (-) TimerEvent: {}
+[17.900514] (-) TimerEvent: {}
+[18.002208] (-) TimerEvent: {}
+[18.115131] (-) TimerEvent: {}
+[18.217581] (-) TimerEvent: {}
+[18.334754] (-) TimerEvent: {}
+[18.458941] (-) TimerEvent: {}
+[18.561789] (-) TimerEvent: {}
+[18.665008] (-) TimerEvent: {}
+[18.767349] (-) TimerEvent: {}
+[18.870223] (-) TimerEvent: {}
+[18.972576] (-) TimerEvent: {}
+[19.076089] (-) TimerEvent: {}
+[19.181554] (-) TimerEvent: {}
+[19.298295] (-) TimerEvent: {}
+[19.400877] (-) TimerEvent: {}
+[19.506470] (-) TimerEvent: {}
+[19.616302] (-) TimerEvent: {}
+[19.723263] (-) TimerEvent: {}
+[19.835062] (-) TimerEvent: {}
+[19.937260] (-) TimerEvent: {}
+[19.966354] (robots_nav_contr) StdoutLine: {'line': b'running egg_info\n'}
+[19.986477] (robots_nav_contr) StdoutLine: {'line': b'writing robots_nav_contr.egg-info/PKG-INFO\n'}
+[19.987038] (robots_nav_contr) StdoutLine: {'line': b'writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt\n'}
+[19.987438] (robots_nav_contr) StdoutLine: {'line': b'writing entry points to robots_nav_contr.egg-info/entry_points.txt\n'}
+[19.987999] (robots_nav_contr) StdoutLine: {'line': b'writing requirements to robots_nav_contr.egg-info/requires.txt\n'}
+[19.988614] (robots_nav_contr) StdoutLine: {'line': b'writing top-level names to robots_nav_contr.egg-info/top_level.txt\n'}
+[20.057052] (robots_nav_contr) StdoutLine: {'line': b"reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[20.058670] (-) TimerEvent: {}
+[20.061582] (robots_nav_contr) StdoutLine: {'line': b"writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[20.072524] (robots_nav_contr) StdoutLine: {'line': b'running build_ext\n'}
+[20.081463] (robots_nav_contr) StdoutLine: {'line': b'Creating /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)\n'}
+[20.088446] (robots_nav_contr) StdoutLine: {'line': b'Installing robots_nav_controller script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[20.088820] (robots_nav_contr) StdoutLine: {'line': b'\n'}
+[20.089028] (robots_nav_contr) StdoutLine: {'line': b'Installed /home/winicon/RobotControl_ws/build/robots_nav_contr\n'}
+[20.089324] (robots_nav_contr) StdoutLine: {'line': b'running symlink_data\n'}
+[20.189685] (-) TimerEvent: {}
+[20.309165] (-) TimerEvent: {}
+[20.417061] (-) TimerEvent: {}
+[20.518534] (-) TimerEvent: {}
+[20.568357] (robots_nav_contr) CommandEnded: {'returncode': 0}
+[20.627487] (-) TimerEvent: {}
+[20.711561] (robots_nav_contr) JobEnded: {'identifier': 'robots_nav_contr', 'rc': 0}
+[20.721644] (-) EventReactorShutdown: {}

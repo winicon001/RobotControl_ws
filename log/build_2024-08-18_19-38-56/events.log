@@ -1,0 +1,211 @@
+[0.000000] (-) TimerEvent: {}
+[0.009742] (robots_nav_contr) JobQueued: {'identifier': 'robots_nav_contr', 'dependencies': OrderedDict()}
+[0.009913] (robots_nav_contr) JobStarted: {'identifier': 'robots_nav_contr'}
+[0.099136] (-) TimerEvent: {}
+[0.202551] (-) TimerEvent: {}
+[0.305375] (-) TimerEvent: {}
+[0.413505] (-) TimerEvent: {}
+[0.538372] (-) TimerEvent: {}
+[0.642066] (-) TimerEvent: {}
+[1.035568] (-) TimerEvent: {}
+[1.195410] (-) TimerEvent: {}
+[1.299310] (-) TimerEvent: {}
+[1.427908] (-) TimerEvent: {}
+[1.530632] (-) TimerEvent: {}
+[1.633595] (-) TimerEvent: {}
+[1.735232] (-) TimerEvent: {}
+[1.843057] (-) TimerEvent: {}
+[1.950902] (-) TimerEvent: {}
+[2.054656] (-) TimerEvent: {}
+[2.172782] (-) TimerEvent: {}
+[2.293455] (-) TimerEvent: {}
+[2.402715] (-) TimerEvent: {}
+[2.519208] (-) TimerEvent: {}
+[2.621459] (-) TimerEvent: {}
+[2.724552] (-) TimerEvent: {}
+[2.829803] (-) TimerEvent: {}
+[2.949846] (-) TimerEvent: {}
+[3.054892] (-) TimerEvent: {}
+[3.162689] (-) TimerEvent: {}
+[3.276035] (-) TimerEvent: {}
+[3.415032] (-) TimerEvent: {}
+[3.537471] (-) TimerEvent: {}
+[3.799532] (-) TimerEvent: {}
+[3.922273] (-) TimerEvent: {}
+[4.039292] (-) TimerEvent: {}
+[4.186756] (-) TimerEvent: {}
+[4.293192] (-) TimerEvent: {}
+[4.418743] (-) TimerEvent: {}
+[4.522712] (-) TimerEvent: {}
+[4.651715] (-) TimerEvent: {}
+[4.759637] (-) TimerEvent: {}
+[4.869623] (-) TimerEvent: {}
+[4.978667] (-) TimerEvent: {}
+[5.139307] (-) TimerEvent: {}
+[5.245826] (-) TimerEvent: {}
+[5.402985] (-) TimerEvent: {}
+[5.516443] (-) TimerEvent: {}
+[5.630976] (-) TimerEvent: {}
+[5.758282] (-) TimerEvent: {}
+[5.886267] (-) TimerEvent: {}
+[6.007259] (-) TimerEvent: {}
+[6.140168] (-) TimerEvent: {}
+[6.250104] (-) TimerEvent: {}
+[6.406071] (-) TimerEvent: {}
+[6.541446] (-) TimerEvent: {}
+[6.643432] (-) TimerEvent: {}
+[6.752590] (-) TimerEvent: {}
+[6.868552] (-) TimerEvent: {}
+[7.049092] (-) TimerEvent: {}
+[7.168935] (-) TimerEvent: {}
+[7.290011] (-) TimerEvent: {}
+[7.396612] (-) TimerEvent: {}
+[7.533859] (-) TimerEvent: {}
+[7.635289] (-) TimerEvent: {}
+[7.784733] (-) TimerEvent: {}
+[7.911503] (-) TimerEvent: {}
+[8.028804] (-) TimerEvent: {}
+[8.266037] (-) TimerEvent: {}
+[8.375510] (-) TimerEvent: {}
+[8.487164] (-) TimerEvent: {}
+[8.589458] (-) TimerEvent: {}
+[8.708695] (-) TimerEvent: {}
+[8.835976] (-) TimerEvent: {}
+[8.956906] (-) TimerEvent: {}
+[9.073980] (-) TimerEvent: {}
+[9.184549] (-) TimerEvent: {}
+[9.316734] (-) TimerEvent: {}
+[9.457802] (-) TimerEvent: {}
+[9.583439] (-) TimerEvent: {}
+[9.685996] (-) TimerEvent: {}
+[9.790839] (-) TimerEvent: {}
+[9.926332] (-) TimerEvent: {}
+[10.099841] (-) TimerEvent: {}
+[10.215401] (-) TimerEvent: {}
+[10.317627] (-) TimerEvent: {}
+[10.421776] (-) TimerEvent: {}
+[10.572425] (-) TimerEvent: {}
+[10.682671] (-) TimerEvent: {}
+[10.805200] (-) TimerEvent: {}
+[10.918047] (-) TimerEvent: {}
+[11.042476] (-) TimerEvent: {}
+[11.152483] (-) TimerEvent: {}
+[11.269003] (-) TimerEvent: {}
+[11.425826] (-) TimerEvent: {}
+[11.542943] (-) TimerEvent: {}
+[11.694345] (-) TimerEvent: {}
+[11.798870] (-) TimerEvent: {}
+[11.906270] (-) TimerEvent: {}
+[12.008238] (-) TimerEvent: {}
+[12.115220] (-) TimerEvent: {}
+[12.224547] (-) TimerEvent: {}
+[12.327213] (-) TimerEvent: {}
+[12.434617] (-) TimerEvent: {}
+[12.538769] (-) TimerEvent: {}
+[12.651469] (-) TimerEvent: {}
+[12.760318] (-) TimerEvent: {}
+[12.874201] (-) TimerEvent: {}
+[12.993033] (-) TimerEvent: {}
+[13.155750] (-) TimerEvent: {}
+[13.262358] (-) TimerEvent: {}
+[13.387469] (-) TimerEvent: {}
+[13.500342] (-) TimerEvent: {}
+[13.609534] (-) TimerEvent: {}
+[13.729579] (-) TimerEvent: {}
+[13.853873] (-) TimerEvent: {}
+[13.998720] (-) TimerEvent: {}
+[14.154254] (-) TimerEvent: {}
+[14.265480] (-) TimerEvent: {}
+[14.376552] (-) TimerEvent: {}
+[14.490706] (-) TimerEvent: {}
+[14.612901] (-) TimerEvent: {}
+[14.773318] (-) TimerEvent: {}
+[14.878500] (-) TimerEvent: {}
+[14.990969] (-) TimerEvent: {}
+[15.118488] (-) TimerEvent: {}
+[15.264015] (-) TimerEvent: {}
+[15.372160] (-) TimerEvent: {}
+[15.479739] (-) TimerEvent: {}
+[15.583560] (-) TimerEvent: {}
+[15.688348] (-) TimerEvent: {}
+[15.856883] (-) TimerEvent: {}
+[15.972297] (-) TimerEvent: {}
+[16.088730] (-) TimerEvent: {}
+[16.192702] (-) TimerEvent: {}
+[16.318472] (-) TimerEvent: {}
+[16.432376] (-) TimerEvent: {}
+[16.536780] (-) TimerEvent: {}
+[16.638595] (-) TimerEvent: {}
+[16.743194] (-) TimerEvent: {}
+[16.847386] (-) TimerEvent: {}
+[16.973359] (-) TimerEvent: {}
+[17.079835] (-) TimerEvent: {}
+[17.182572] (-) TimerEvent: {}
+[17.298965] (-) TimerEvent: {}
+[17.432174] (-) TimerEvent: {}
+[17.536495] (-) TimerEvent: {}
+[17.647984] (-) TimerEvent: {}
+[17.812684] (-) TimerEvent: {}
+[17.972474] (-) TimerEvent: {}
+[18.100511] (-) TimerEvent: {}
+[18.208564] (-) TimerEvent: {}
+[18.347601] (-) TimerEvent: {}
+[18.420400] (robots_nav_contr) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/winicon/RobotControl_ws/build/robots_nav_contr/build', '--no-deps', 'symlink_data'], 'cwd': '/home/winicon/RobotControl_ws/build/robots_nav_contr', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_GB:en', 'USER': 'winicon', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/winicon/robot_ws/install/serial_motor_demo_msgs/lib:/home/winicon/robot_ws/install/serial/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/winicon', 'OLDPWD': '/home/winicon/RobotControl_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/usr/share/applications/terminator.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '2823', 'SYSTEMD_EXEC_PID': '2995', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator25ef4b219e3b005583550f2b0f9f990c3', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '6344', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/winicon/RobotControl_ws/install:/home/winicon/ros/ros2_ws/install:/home/winicon/robot_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'winicon', 'JOURNAL_STREAM': '8:15061', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'winicon', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/icon-LinuxBox2:@/tmp/.ICE-unix/2966,unix/icon-LinuxBox2:/tmp/.ICE-unix/2966', 'INVOCATION_ID': 'fe2587ae71904bbc9a81a439515adf77', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'IBUS_DISABLE_SNOOPER': '1', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.QAGNS2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/winicon/RobotControl_ws/install/robots_navigationController:/home/winicon/ros/ros2_ws/install/talker_listener:/home/winicon/robot_ws/install/serial_motor_demo:/home/winicon/robot_ws/install/serial_motor_demo_msgs:/home/winicon/robot_ws/install/serial:/home/winicon/robot_ws/install/my_bot:/opt/ros/humble', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:a5f36b7f-70b6-4885-b7c1-087bbb48c977', 'QT_ACCESSIBILITY': '1', 'ROS_MASTER_URI': 'http://localhost:11311', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GJS_DEBUG_OUTPUT': 'stderr', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/winicon/RobotControl_ws/build/robots_nav_contr', 'TURTLEBOT3_MODEL': 'waffle', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/winicon/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:/home/winicon/RobotControl_ws/build/robots_navigationController:/home/winicon/RobotControl_ws/install/robots_navigationController/lib/python3.10/site-packages:/home/winicon/ros/ros2_ws/install/talker_listener/lib/python3.10/site-packages:/home/winicon/robot_ws/build/serial_motor_demo:/home/winicon/robot_ws/install/serial_motor_demo/lib/python3.10/site-packages:/home/winicon/robot_ws/install/serial_motor_demo_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/winicon/robot_ws/install/serial_motor_demo_msgs:/home/winicon/robot_ws/install/serial:/home/winicon/robot_ws/install/my_bot'}, 'shell': False}
+[18.521638] (-) TimerEvent: {}
+[18.623660] (-) TimerEvent: {}
+[19.051984] (-) TimerEvent: {}
+[19.686042] (-) TimerEvent: {}
+[19.824793] (robots_nav_contr) StdoutLine: {'line': b'running develop\n'}
+[19.825646] (-) TimerEvent: {}
+[20.048592] (-) TimerEvent: {}
+[20.179309] (-) TimerEvent: {}
+[20.312258] (-) TimerEvent: {}
+[20.418717] (-) TimerEvent: {}
+[20.529321] (-) TimerEvent: {}
+[20.634534] (-) TimerEvent: {}
+[20.737212] (-) TimerEvent: {}
+[20.864710] (-) TimerEvent: {}
+[20.986666] (-) TimerEvent: {}
+[21.089980] (-) TimerEvent: {}
+[21.192301] (-) TimerEvent: {}
+[21.296173] (-) TimerEvent: {}
+[21.403218] (-) TimerEvent: {}
+[21.506332] (-) TimerEvent: {}
+[21.612471] (-) TimerEvent: {}
+[21.714379] (-) TimerEvent: {}
+[21.849128] (-) TimerEvent: {}
+[21.963868] (-) TimerEvent: {}
+[22.066518] (-) TimerEvent: {}
+[22.171188] (-) TimerEvent: {}
+[22.287956] (-) TimerEvent: {}
+[22.433591] (-) TimerEvent: {}
+[22.751802] (-) TimerEvent: {}
+[22.784781] (robots_nav_contr) StdoutLine: {'line': b'running egg_info\n'}
+[22.816693] (robots_nav_contr) StdoutLine: {'line': b'creating robots_nav_contr.egg-info\n'}
+[22.831185] (robots_nav_contr) StdoutLine: {'line': b'writing robots_nav_contr.egg-info/PKG-INFO\n'}
+[22.831492] (robots_nav_contr) StdoutLine: {'line': b'writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt\n'}
+[22.836250] (robots_nav_contr) StdoutLine: {'line': b'writing entry points to robots_nav_contr.egg-info/entry_points.txt\n'}
+[22.849285] (robots_nav_contr) StdoutLine: {'line': b'writing requirements to robots_nav_contr.egg-info/requires.txt\n'}
+[22.849812] (robots_nav_contr) StdoutLine: {'line': b'writing top-level names to robots_nav_contr.egg-info/top_level.txt\n'}
+[22.850926] (robots_nav_contr) StdoutLine: {'line': b"writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[22.851225] (robots_nav_contr) StdoutLine: {'line': b"reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[22.851407] (robots_nav_contr) StdoutLine: {'line': b"writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[22.851895] (-) TimerEvent: {}
+[22.862301] (robots_nav_contr) StdoutLine: {'line': b'running build_ext\n'}
+[22.875310] (robots_nav_contr) StdoutLine: {'line': b'Creating /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)\n'}
+[22.903328] (robots_nav_contr) StdoutLine: {'line': b'Installing robot_navigationcontroller script to /home/winicon/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[22.904828] (robots_nav_contr) StdoutLine: {'line': b'\n'}
+[22.905195] (robots_nav_contr) StdoutLine: {'line': b'Installed /home/winicon/RobotControl_ws/build/robots_nav_contr\n'}
+[22.905527] (robots_nav_contr) StdoutLine: {'line': b'running symlink_data\n'}
+[22.905715] (robots_nav_contr) StdoutLine: {'line': b'creating /home/winicon/RobotControl_ws/install/robots_nav_contr/share/ament_index\n'}
+[22.905887] (robots_nav_contr) StdoutLine: {'line': b'creating /home/winicon/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index\n'}
+[22.906366] (robots_nav_contr) StdoutLine: {'line': b'creating /home/winicon/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages\n'}
+[22.906988] (robots_nav_contr) StdoutLine: {'line': b'symbolically linking /home/winicon/RobotControl_ws/build/robots_nav_contr/resource/robots_nav_contr -> /home/winicon/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages\n'}
+[22.907181] (robots_nav_contr) StdoutLine: {'line': b'symbolically linking /home/winicon/RobotControl_ws/build/robots_nav_contr/package.xml -> /home/winicon/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr\n'}
+[22.954128] (-) TimerEvent: {}
+[23.059333] (-) TimerEvent: {}
+[23.170797] (-) TimerEvent: {}
+[23.205590] (robots_nav_contr) CommandEnded: {'returncode': 0}
+[23.289562] (robots_nav_contr) JobEnded: {'identifier': 'robots_nav_contr', 'rc': 0}
+[23.313348] (-) TimerEvent: {}
+[23.314680] (-) EventReactorShutdown: {}
