@@ -19,10 +19,12 @@ setup(
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
+
         'console_scripts': [
-            "robots_nav_controller = robots_nav_contr.robotsnavcontroller:main",
+            "robots_nav_controller = robots_nav_contr.robotsnavcontroller:main", 
             "robot_command_receiver = robots_nav_contr.nav_commands_receiver:main",
             "robots_serial_commands = robots_nav_contr.raspberry_arduinoSerial:main",
+            "redeye_commands = robots_nav_contr.redeye_nav_commands_receiver:main",
         ],
     },
 )
