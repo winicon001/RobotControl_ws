@@ -5,6 +5,7 @@ resource/robots_nav_contr
 robots_nav_contr/__init__.py
 robots_nav_contr/nav_commands_receiver.py
 robots_nav_contr/raspberry_arduinoSerial.py
+robots_nav_contr/redeye_nav_commands_receiver.py
 robots_nav_contr/robotsnavcontroller.py
 robots_nav_contr.egg-info/PKG-INFO
 robots_nav_contr.egg-info/SOURCES.txt

@@ -1,0 +1,3 @@
+/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+error: [Errno 17] File exists: '/home/winicon/redEye/src/RobotControl_ws/build/robots_nav_contr/resource/robots_nav_contr' -> '/home/winicon/redEye/src/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages/robots_nav_contr'
