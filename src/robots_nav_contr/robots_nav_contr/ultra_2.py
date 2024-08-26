@@ -5,6 +5,9 @@ import time
 GPIO.setmode(GPIO.BCM)
 
 # Define GPIO pins for the ultrasonic sensor
+
+# TRIG_PIN = 9
+# ECHO_PIN = 10
 TRIG_PIN = 11
 ECHO_PIN = 8
 

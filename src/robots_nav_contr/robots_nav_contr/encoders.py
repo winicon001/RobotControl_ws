@@ -52,6 +52,48 @@ def wheelEncodersReading():
     Encoder2StatesPerEncoder2rotation = 40 #Encoder Count Per Wheel Encoder2rotation
     Encoder2distancePerStep = wheelCircumference/Encoder2StatesPerEncoder2rotation # Calculating the Encoder2distance travelled per wheel encoder tick
 
+    
+
+    #GPIO.output(outputLED, GPIO.HIGH)
+    # Encoder1StateCurrent = GPIO.input(encoder1)
+    # if Encoder1StateCurrent != Encoder1StateLast: # If the read value is different from the previous
+    #     Encoder1StateLast = Encoder1StateCurrent # Increment the count
+    #     Encoder1StateCount +=1
+    #     Encoder1StateCountTotal +=1
+    
+    
+    # if Encoder1StateCount == Encoder1StatesPerEncoder1rotation:
+    #     Encoder1rotationCount +=1
+    #     Encoder1StateCount = 0
+    
+    # Encoder1distance = Encoder1distancePerStep * Encoder1StateCountTotal
+
+
+
+    # #GPIO.output(outputLED, GPIO.HIGH)
+    # Encoder2StateCurrent = GPIO.input(encoder2)
+    # if Encoder2StateCurrent != Encoder2StateLast: # If the read value is different from the previous
+    #     Encoder2StateLast = Encoder2StateCurrent # Increment the count
+    #     Encoder2StateCount +=1
+    #     Encoder2StateCountTotal +=1
+        
+        
+    # if Encoder2StateCount == Encoder2StatesPerEncoder2rotation:
+    #     Encoder2rotationCount +=1
+    #     Encoder2StateCount = 0
+    
+    # Encoder2distance = Encoder2distancePerStep * Encoder2StateCountTotal
+
+    # print('   Encoder1StateCount =  ', Encoder1StateCount  , end=' ')
+    # print('   Encoder1StateCountTotal =  ', Encoder1StateCountTotal, end=' ')
+    # print('   Encoder1distance =  ', Encoder1distance , end= '  ')
+
+    # print('   Encoder2StateCount =  ', Encoder2StateCount  , end=' ')
+    # print('   Encoder2StateCountTotal =  ', Encoder2StateCountTotal, end=' ')
+    # print('   Encoder2distance =  ', Encoder2distance, 'mm')
+
+
+    
     while True:
 
         #GPIO.output(outputLED, GPIO.HIGH)
@@ -92,6 +134,3 @@ def wheelEncodersReading():
         print('   Encoder2StateCountTotal =  ', Encoder2StateCountTotal, end=' ')
         print('   Encoder2distance =  ', Encoder2distance, 'mm')
 
-    #except KeyboardInterrupt: # If CTRL+C is pressed
-       # kit.motor1.throttle = 0
-        #GPIO.cleanup() # End the Process

@@ -45,16 +45,20 @@ def setup():
     #motor.setup()
 
 def run():
+    speed = 70
     status_right = GPIO.input(line_pin_right)
     status_middle = GPIO.input(line_pin_middle)
     status_left = GPIO.input(line_pin_left)
-    #print('R%d   M%d   L%d'%(status_right,status_middle,status_left))
+    print('R%d   M%d   L%d'%(status_right,status_middle,status_left))
     if status_middle == 1:
-        move.move(100, 'forward', 'no', 1)
+        move.move(speed, 'forward', 'no', 1)
+        print("Midle Sensor Detected")
     elif status_left == 1:
-        move.move(100, 'no', 'right', 1)
+        move.move(speed, 'no', 'right', 1)
+        print("Left Sensor Detected")
     elif status_right == 1:
-        move.move(100, 'no', 'left', 1)
+        move.move(speed, 'no', 'left', 1)
+        print("Right Sensor Detected")
     else:
         move.move(100, 'backward', 'no', 1)
 

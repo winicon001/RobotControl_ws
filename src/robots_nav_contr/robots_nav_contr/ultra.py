@@ -7,9 +7,10 @@
 # Date        : 2019/02/23
 import RPi.GPIO as GPIO
 import time
-import move
+from robots_nav_contr import move
 
-
+# Tr = 9
+# Ec = 10
 Tr = 11
 Ec = 8
 

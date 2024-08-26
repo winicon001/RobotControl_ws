@@ -7,5 +7,6 @@ import ultra
 while True:
     move.setup()
     move.move(100, 'forward', 'no', 1)
-    encoders.wheelEncodersReading()
+    #encoders.wheelEncodersReading()
+    ultra.checkdist()
 
