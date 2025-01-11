@@ -13,8 +13,8 @@ import RPi.GPIO as GPIO
 #LED_Pin    = 24
 #LED_Pin    = 15
 outputLED = 23
-encoder1 = 1
-#encoder2 = 25
+leftencoder = 1
+#rightencoder = 25
 count = 0
 
 
@@ -22,7 +22,7 @@ count = 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(outputLED, GPIO.OUT)
-GPIO.setup(encoder1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(leftencoder, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 
 #GPIO.output(outputLED, GPIO.HIGH)
@@ -30,7 +30,7 @@ GPIO.setup(encoder1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 while True:
 
-    input = GPIO.input(encoder1)
+    input = GPIO.input(leftencoder)
 
     if input == GPIO.LOW:
         count +=1

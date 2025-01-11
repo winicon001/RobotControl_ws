@@ -40,7 +40,7 @@ class AutoCommandReceiver(Node):
                 print("Okay, Program started")
                 
                 move.move(100, 'backward', 'no', 1)
-                encoders.wheelEncodersReading()
+                encoders.enc()
                 pass
 
             case "S":

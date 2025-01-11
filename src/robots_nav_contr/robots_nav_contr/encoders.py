@@ -11,126 +11,83 @@ import time
 #from adafruit_Motorkit import Motorkit
 
 # Encoders Pins Declaration
-encoder1 = 15
-encoder2 = 23
+leftencoder = 15
+rightencoder = 23
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(encoder1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(encoder2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(leftencoder, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(rightencoder, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
-Encoder1StateLast = GPIO.input(encoder1)
-Encoder1rotationCount = 0
-Encoder1StateCount = 0
-Encoder1StateCountTotal = 0
+Encoder1StateLast = GPIO.input(leftencoder)
+enc1_revCount = 0
 
-Encoder2StateLast = GPIO.input(encoder2)
-Encoder2rotationCount = 0
-Encoder2StateCount = 0
-Encoder2StateCountTotal = 0
+enc1count = 0           # Left wheel Total Revolution
+enc1countTotal = 0      # Left wheel Total Encoder Ticks count
 
-# Right Wheel Encoder
-def wheelEncodersReading():
-
-    Encoder1StateLast = GPIO.input(encoder1)
-    Encoder1rotationCount = 0
-    Encoder1StateCount = 0
-    Encoder1StateCountTotal = 0
-
-    Encoder2StateLast = GPIO.input(encoder2)
-    Encoder2rotationCount = 0
-    Encoder2StateCount = 0
-    Encoder2StateCountTotal = 0
-
-    # Right Wheel Calculation
-    wheelCircumference = 204 # Wheel Circumference in mm
-    Encoder1StatesPerEncoder1rotation = 40 #Encoder Count Per Wheel Encoder1rotation
-    Encoder1distancePerStep = wheelCircumference/Encoder1StatesPerEncoder1rotation # Calculating the Encoder1distance travelled per wheel encoder tick
-
-    # Left Wheel Calculation
-    wheelCircumference = 207 # Wheel Circumference in mm
-    Encoder2StatesPerEncoder2rotation = 40 #Encoder Count Per Wheel Encoder2rotation
-    Encoder2distancePerStep = wheelCircumference/Encoder2StatesPerEncoder2rotation # Calculating the Encoder2distance travelled per wheel encoder tick
+Encoder2StateLast = GPIO.input(rightencoder)
+enc2_revCount = 0
+enc2count = 0           # Right wheel Total Revolution
+enc2countTotal = 0      # Right wheel Total Encoder Ticks count
 
     
+def enc():
 
-    #GPIO.output(outputLED, GPIO.HIGH)
-    # Encoder1StateCurrent = GPIO.input(encoder1)
-    # if Encoder1StateCurrent != Encoder1StateLast: # If the read value is different from the previous
-    #     Encoder1StateLast = Encoder1StateCurrent # Increment the count
-    #     Encoder1StateCount +=1
-    #     Encoder1StateCountTotal +=1
+    global wheelCircumference
+
+    global Encoder1StateLast
+    global enc1count        # Left wheel Total Revolution
+    global enc1countTotal   # Left wheel Total Encoder Ticks count
+    global enc1_revCount
+
+    global Encoder2StateLast
+    global enc2count        # Right wheel Total Revolution
+    global enc2countTotal   # Right wheel Total Encoder Ticks count
+    global enc2_revCount
+
+    wheelCircumference = 215                # Wheel Circumference in mm (changed from 204 to 215)
+    EncodercountPerRev = 40                 # Encoder Count Per Wheel Encoder1rotation
+    dist_per_tic = wheelCircumference/EncodercountPerRev # Calculating the Encoder1distan
+
+    Encoder1StateCurrent = GPIO.input(leftencoder)
+    if Encoder1StateCurrent != Encoder1StateLast: # If the read value is different from the previous
+        Encoder1StateLast = Encoder1StateCurrent # Increment the count
+        enc1count +=1
+        enc1countTotal +=1
     
+    if enc1count == EncodercountPerRev:
+        enc1_revCount +=1
+        enc1count = 0
     
-    # if Encoder1StateCount == Encoder1StatesPerEncoder1rotation:
-    #     Encoder1rotationCount +=1
-    #     Encoder1StateCount = 0
-    
-    # Encoder1distance = Encoder1distancePerStep * Encoder1StateCountTotal
+    Encoder1distance = dist_per_tic * enc1countTotal
 
-
-
-    # #GPIO.output(outputLED, GPIO.HIGH)
-    # Encoder2StateCurrent = GPIO.input(encoder2)
-    # if Encoder2StateCurrent != Encoder2StateLast: # If the read value is different from the previous
-    #     Encoder2StateLast = Encoder2StateCurrent # Increment the count
-    #     Encoder2StateCount +=1
-    #     Encoder2StateCountTotal +=1
+    Encoder2StateCurrent = GPIO.input(rightencoder)
+    if Encoder2StateCurrent != Encoder2StateLast: # If the read value is different from the previous
+        Encoder2StateLast = Encoder2StateCurrent # Increment the count
+        enc2count +=1
+        enc2countTotal +=1
         
-        
-    # if Encoder2StateCount == Encoder2StatesPerEncoder2rotation:
-    #     Encoder2rotationCount +=1
-    #     Encoder2StateCount = 0
+    if enc2count == EncodercountPerRev:
+        enc2_revCount +=1
+        enc2count = 0
     
-    # Encoder2distance = Encoder2distancePerStep * Encoder2StateCountTotal
+    Encoder2distance = dist_per_tic * enc2countTotal
 
-    # print('   Encoder1StateCount =  ', Encoder1StateCount  , end=' ')
-    # print('   Encoder1StateCountTotal =  ', Encoder1StateCountTotal, end=' ')
-    # print('   Encoder1distance =  ', Encoder1distance , end= '  ')
+    print('   enc1count =  ', enc1count  , end=' ')
+    print('   enc1countTotal =  ', enc1countTotal, end=' ')
+    print('   RevCount_L =  ', enc1_revCount , end= '  ')
+    print('   Encoder1distance =  ', round(Encoder1distance, 2) , 'mm', end= '  ')
 
-    # print('   Encoder2StateCount =  ', Encoder2StateCount  , end=' ')
-    # print('   Encoder2StateCountTotal =  ', Encoder2StateCountTotal, end=' ')
-    # print('   Encoder2distance =  ', Encoder2distance, 'mm')
+    print('   enc2count =  ', enc2count  , end=' ')
+    print('   enc2countTotal =  ', enc2countTotal, end=' ')
+    print('   RevCount_R =  ', enc2_revCount , end= '  ')
+    print('   Encoder2distance =  ', round(Encoder2distance, 2), 'mm')
 
+    #except KeyboardInterrupt: # If CTRL+C is pressed
+       # kit.motor1.throttle = 0
+        #GPIO.cleanup() # End the Process
 
-    
+if __name__ == "__main__":
+    # init()
     while True:
-
-        #GPIO.output(outputLED, GPIO.HIGH)
-        Encoder1StateCurrent = GPIO.input(encoder1)
-        if Encoder1StateCurrent != Encoder1StateLast: # If the read value is different from the previous
-            Encoder1StateLast = Encoder1StateCurrent # Increment the count
-            Encoder1StateCount +=1
-            Encoder1StateCountTotal +=1
-        
-        
-        if Encoder1StateCount == Encoder1StatesPerEncoder1rotation:
-            Encoder1rotationCount +=1
-            Encoder1StateCount = 0
-        
-        Encoder1distance = Encoder1distancePerStep * Encoder1StateCountTotal
-
-
-
-         #GPIO.output(outputLED, GPIO.HIGH)
-        Encoder2StateCurrent = GPIO.input(encoder2)
-        if Encoder2StateCurrent != Encoder2StateLast: # If the read value is different from the previous
-            Encoder2StateLast = Encoder2StateCurrent # Increment the count
-            Encoder2StateCount +=1
-            Encoder2StateCountTotal +=1
-            
-            
-        if Encoder2StateCount == Encoder2StatesPerEncoder2rotation:
-            Encoder2rotationCount +=1
-            Encoder2StateCount = 0
-        
-        Encoder2distance = Encoder2distancePerStep * Encoder2StateCountTotal
-
-        print('   Encoder1StateCount =  ', Encoder1StateCount  , end=' ')
-        print('   Encoder1StateCountTotal =  ', Encoder1StateCountTotal, end=' ')
-        print('   Encoder1distance =  ', Encoder1distance , end= '  ')
-
-        print('   Encoder2StateCount =  ', Encoder2StateCount  , end=' ')
-        print('   Encoder2StateCountTotal =  ', Encoder2StateCountTotal, end=' ')
-        print('   Encoder2distance =  ', Encoder2distance, 'mm')
-
+        enc()
