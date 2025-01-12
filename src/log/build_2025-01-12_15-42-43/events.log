@@ -1,0 +1,84 @@
+[0.000000] (-) TimerEvent: {}
+[0.000864] (robots_nav_contr) JobQueued: {'identifier': 'robots_nav_contr', 'dependencies': OrderedDict()}
+[0.001038] (robots_nav_contr) JobStarted: {'identifier': 'robots_nav_contr'}
+[0.096164] (-) TimerEvent: {}
+[0.196962] (-) TimerEvent: {}
+[0.297726] (-) TimerEvent: {}
+[0.398395] (-) TimerEvent: {}
+[0.499003] (-) TimerEvent: {}
+[0.599686] (-) TimerEvent: {}
+[0.700280] (-) TimerEvent: {}
+[0.800878] (-) TimerEvent: {}
+[0.901591] (-) TimerEvent: {}
+[1.002280] (-) TimerEvent: {}
+[1.102885] (-) TimerEvent: {}
+[1.203604] (-) TimerEvent: {}
+[1.304429] (-) TimerEvent: {}
+[1.405054] (-) TimerEvent: {}
+[1.505767] (-) TimerEvent: {}
+[1.606497] (-) TimerEvent: {}
+[1.707137] (-) TimerEvent: {}
+[1.807785] (-) TimerEvent: {}
+[1.908399] (-) TimerEvent: {}
+[2.008986] (-) TimerEvent: {}
+[2.109583] (-) TimerEvent: {}
+[2.210324] (-) TimerEvent: {}
+[2.310963] (-) TimerEvent: {}
+[2.411631] (-) TimerEvent: {}
+[2.512435] (-) TimerEvent: {}
+[2.613366] (-) TimerEvent: {}
+[2.714183] (-) TimerEvent: {}
+[2.814845] (-) TimerEvent: {}
+[2.915768] (-) TimerEvent: {}
+[3.016749] (-) TimerEvent: {}
+[3.039561] (robots_nav_contr) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/build', '--no-deps', 'symlink_data'], 'cwd': '/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'en_GB:en', 'USER': 'winicon', 'SSH_CLIENT': '2a00:23cc:c409:1501:7104:6128:5633:5ad0 59075 22', 'XDG_SESSION_TYPE': 'tty', 'GIT_ASKPASS': '/home/winicon/.vscode-server/cli/servers/Stable-fabdb6a30b49f79a7aba0f2ad9df9b399473380f/server/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/home/winicon/.vscode-server/cli/servers/Stable-fabdb6a30b49f79a7aba0f2ad9df9b399473380f/server/bin/helpers/browser.sh', 'MOTD_SHOWN': 'pam', 'HOME': '/home/winicon', 'OLDPWD': '/home/winicon/redEye/src/RobotControl_ws/src/robots_nav_contr/robots_nav_contr', 'TERM_PROGRAM_VERSION': '1.96.2', 'VSCODE_IPC_HOOK_CLI': '/run/user/1000/vscode-ipc-52fa82b9-f8e0-4873-83a7-2663505317f0.sock', 'ROS_PYTHON_VERSION': '3', 'GTK_MODULES': 'appmenu-gtk-module', 'VSCODE_GIT_ASKPASS_MAIN': '/home/winicon/.vscode-server/cli/servers/Stable-fabdb6a30b49f79a7aba0f2ad9df9b399473380f/server/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/home/winicon/.vscode-server/cli/servers/Stable-fabdb6a30b49f79a7aba0f2ad9df9b399473380f/server/node', 'SSL_CERT_FILE': '/usr/lib/ssl/certs/ca-certificates.crt', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'UBUNTU_MENUPROXY': '1', 'ROS_DISTRO': 'humble', 'LOGNAME': 'winicon', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '5', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/home/winicon/.vscode-server/cli/servers/Stable-fabdb6a30b49f79a7aba0f2ad9df9b399473380f/server/bin/remote-cli:/home/winicon/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1000', 'SSL_CERT_DIR': '/usr/lib/ssl/certs', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-60c8bdd405.sock', 'TERM_PROGRAM': 'vscode', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr', 'LC_ALL': 'en_US.UTF-8', 'SSH_CONNECTION': '2a00:23cc:c409:1501:7104:6128:5633:5ad0 59075 2a00:23cc:c409:1501:64ee:8a42:9732:705b 22', 'XDG_DATA_DIRS': '/home/winicon/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[3.116905] (-) TimerEvent: {}
+[3.217659] (-) TimerEvent: {}
+[3.318286] (-) TimerEvent: {}
+[3.418889] (-) TimerEvent: {}
+[3.519532] (-) TimerEvent: {}
+[3.620117] (-) TimerEvent: {}
+[3.720701] (-) TimerEvent: {}
+[3.821322] (-) TimerEvent: {}
+[3.921966] (-) TimerEvent: {}
+[4.022621] (-) TimerEvent: {}
+[4.123243] (-) TimerEvent: {}
+[4.210391] (robots_nav_contr) StdoutLine: {'line': b'running develop\n'}
+[4.223467] (-) TimerEvent: {}
+[4.324058] (-) TimerEvent: {}
+[4.424840] (-) TimerEvent: {}
+[4.525505] (-) TimerEvent: {}
+[4.626129] (-) TimerEvent: {}
+[4.726764] (-) TimerEvent: {}
+[4.827390] (-) TimerEvent: {}
+[4.927978] (-) TimerEvent: {}
+[4.993474] (robots_nav_contr) StdoutLine: {'line': b'running egg_info\n'}
+[4.994219] (robots_nav_contr) StdoutLine: {'line': b'creating robots_nav_contr.egg-info\n'}
+[4.994926] (robots_nav_contr) StdoutLine: {'line': b'writing robots_nav_contr.egg-info/PKG-INFO\n'}
+[4.996199] (robots_nav_contr) StdoutLine: {'line': b'writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt\n'}
+[4.997005] (robots_nav_contr) StdoutLine: {'line': b'writing entry points to robots_nav_contr.egg-info/entry_points.txt\n'}
+[4.997671] (robots_nav_contr) StdoutLine: {'line': b'writing requirements to robots_nav_contr.egg-info/requires.txt\n'}
+[4.998194] (robots_nav_contr) StdoutLine: {'line': b'writing top-level names to robots_nav_contr.egg-info/top_level.txt\n'}
+[4.999108] (robots_nav_contr) StdoutLine: {'line': b"writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[5.006846] (robots_nav_contr) StdoutLine: {'line': b"reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[5.010102] (robots_nav_contr) StdoutLine: {'line': b"writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'\n"}
+[5.015735] (robots_nav_contr) StdoutLine: {'line': b'running build_ext\n'}
+[5.016489] (robots_nav_contr) StdoutLine: {'line': b'Creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)\n'}
+[5.019869] (robots_nav_contr) StdoutLine: {'line': b'Installing redeye_commands script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[5.020787] (robots_nav_contr) StdoutLine: {'line': b'Installing robot_command_receiver script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[5.021537] (robots_nav_contr) StdoutLine: {'line': b'Installing robots_nav_controller script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[5.022274] (robots_nav_contr) StdoutLine: {'line': b'Installing robots_serial_commands script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr\n'}
+[5.023571] (robots_nav_contr) StdoutLine: {'line': b'\n'}
+[5.024124] (robots_nav_contr) StdoutLine: {'line': b'Installed /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr\n'}
+[5.024479] (robots_nav_contr) StdoutLine: {'line': b'running symlink_data\n'}
+[5.025050] (robots_nav_contr) StdoutLine: {'line': b'creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index\n'}
+[5.025393] (robots_nav_contr) StdoutLine: {'line': b'creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index/resource_index\n'}
+[5.025820] (robots_nav_contr) StdoutLine: {'line': b'creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index/resource_index/packages\n'}
+[5.026257] (robots_nav_contr) StdoutLine: {'line': b'symbolically linking /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/resource/robots_nav_contr -> /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index/resource_index/packages\n'}
+[5.026916] (robots_nav_contr) StdoutLine: {'line': b'symbolically linking /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/package.xml -> /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/robots_nav_contr\n'}
+[5.028166] (-) TimerEvent: {}
+[5.129354] (-) TimerEvent: {}
+[5.176514] (robots_nav_contr) CommandEnded: {'returncode': 0}
+[5.229581] (-) TimerEvent: {}
+[5.263214] (robots_nav_contr) JobEnded: {'identifier': 'robots_nav_contr', 'rc': 0}
+[5.268422] (-) EventReactorShutdown: {}

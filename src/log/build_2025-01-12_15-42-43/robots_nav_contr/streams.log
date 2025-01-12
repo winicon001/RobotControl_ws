@@ -1,0 +1,27 @@
+[3.041s] Invoking command in '/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr': PYTHONPATH=/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/build --no-deps symlink_data
+[4.210s] running develop
+[4.993s] running egg_info
+[4.994s] creating robots_nav_contr.egg-info
+[4.994s] writing robots_nav_contr.egg-info/PKG-INFO
+[4.995s] writing dependency_links to robots_nav_contr.egg-info/dependency_links.txt
+[4.996s] writing entry points to robots_nav_contr.egg-info/entry_points.txt
+[4.997s] writing requirements to robots_nav_contr.egg-info/requires.txt
+[4.997s] writing top-level names to robots_nav_contr.egg-info/top_level.txt
+[4.998s] writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[5.006s] reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[5.009s] writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
+[5.015s] running build_ext
+[5.016s] Creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)
+[5.019s] Installing redeye_commands script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr
+[5.020s] Installing robot_command_receiver script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr
+[5.021s] Installing robots_nav_controller script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr
+[5.021s] Installing robots_serial_commands script to /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/robots_nav_contr
+[5.023s] 
+[5.023s] Installed /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr
+[5.024s] running symlink_data
+[5.024s] creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index
+[5.025s] creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index/resource_index
+[5.025s] creating /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index/resource_index/packages
+[5.026s] symbolically linking /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/resource/robots_nav_contr -> /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/ament_index/resource_index/packages
+[5.027s] symbolically linking /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/package.xml -> /home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/share/robots_nav_contr
+[5.178s] Invoked command in '/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr' returned '0': PYTHONPATH=/home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/redEye/src/RobotControl_ws/src/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/redEye/src/RobotControl_ws/src/build/robots_nav_contr/build --no-deps symlink_data

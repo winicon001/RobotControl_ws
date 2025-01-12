@@ -6,6 +6,8 @@
 # E-mail      : support@adeept.com
 # Author      : William
 # Date        : 2019/02/23
+# Modified	  : winicon@live.com
+
 import time
 import RPi.GPIO as GPIO
 
@@ -15,10 +17,10 @@ import RPi.GPIO as GPIO
 Motor_A_EN    = 4
 Motor_B_EN    = 17
 
-Motor_A_Pin1  = 26
-Motor_A_Pin2  = 21
-Motor_B_Pin1  = 27
-Motor_B_Pin2  = 18
+Motor_A_Pin1  = 21
+Motor_A_Pin2  = 26
+Motor_B_Pin1  = 18
+Motor_B_Pin2  = 27
 
 Dir_forward   = 1
 Dir_backward  = 0
@@ -115,7 +117,8 @@ def move(speed, direction, turn, radius=0.6):   # 0 < radius <= 1
 			motor_right(1, right_backward, speed)
 		elif turn == 'left':
 			motor_left(1, left_backward, speed)
-			motor_right(0, right_forward, int(speed*radius))
+			# motor_right(0, right_forward, int(speed*radius))
+			motor_right(1, right_forward, speed)
 		else:
 			motor_left(1, left_backward, speed)
 			motor_right(1, right_backward, speed)
