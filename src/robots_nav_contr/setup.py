@@ -25,6 +25,7 @@ setup(
             "robot_command_receiver = robots_nav_contr.nav_commands_receiver:main", # This is the robots command subscriber. Used on dev pc
             "robots_serial_commands = robots_nav_contr.raspberry_arduinoSerial:main", # This is the robots command subscriber. Used on smilebot
             "redeye_commands = robots_nav_contr.redeye_nav_commands_receiver:main", # This is the robots command subscriber. Used on redEye
+            "octavia_commands = robots_nav_contr.octavia_arduinoSerial:main", # This is the robots command subscriber. Used on Octavia
             
         ],
     },
