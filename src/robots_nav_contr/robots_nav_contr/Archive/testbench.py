@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 import time
-import arduinosensorsdata
-
+import time
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -32,17 +31,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-while True:
-
-    ################################
-    # Arrang MPU6050 data
-    ################################
-
-    arduino_read_values = arduinosensorsdata.reading.checkdata()
-    dist = arduino_read_values[0]
-    yaw = float(arduino_read_values[1])
-    pitch = float(arduino_read_values[2])
-    row = float(arduino_read_values[3])
-
-

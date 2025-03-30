@@ -23,7 +23,7 @@ setup(
         'console_scripts': [
             "robots_nav_controller = robots_nav_contr.robotsnavcontroller:main", # This is the robots command publisher. Used on dev pc
             "robot_command_receiver = robots_nav_contr.nav_commands_receiver:main", # This is the robots command subscriber. Used on dev pc
-            "smilebot_commands = robots_nav_contr.raspberry_arduinoSerial:main", # This is the robots command subscriber. Used on smilebot
+            "smilebot_commands = robots_nav_contr.smilebot_rosdata:main", # This is the robots command subscriber. Used on smilebot
             "redeye_commands = robots_nav_contr.redeye_nav_commands_receiver:main", # This is the robots command subscriber. Used on redEye
             
         ],

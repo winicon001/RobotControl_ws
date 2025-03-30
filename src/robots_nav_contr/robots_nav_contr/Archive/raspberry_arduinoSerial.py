@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+
+# This code has been replaced by smilebot_rosdata
+# This can still be used but serial data transfer hasnt been perfected as 
+# is in smilebot_rosdata
+
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -23,7 +29,7 @@ class AutoCommandReceiver(Node):
         self.receiver_ = self.create_subscription(String, '/auto_command', self.receiver_callback, 10) # Message type to receive, name of the topic to subscribe to and the buffer size
         self.ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', 9600, timeout=5) #  Corresponding to /ttyUSB0
         
-        self.publisher = self.create_publisher(String, '/arduino_data', 10)  # Publishes to another topic
+        self.publisher = self.create_publisher(String, '/arduino_dat', 10)  # Publishes to another topic
         
     def receiver_callback(self, msg):
         self.get_logger().info(f"Received: {msg.data}")

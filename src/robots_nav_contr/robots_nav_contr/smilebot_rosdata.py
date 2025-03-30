@@ -26,7 +26,7 @@ class SerialHandler:
 class ROS2SerialNode(Node):
     def __init__(self, serial_port, baudrate):
         """Initialize the ROS2 node and serial handler."""
-        super().__init__('ros2_serial_node')
+        super().__init__('smilebot_command_receiver')
 
         # Set up the serial handler
         self.serial_handler = SerialHandler(serial_port, baudrate)
@@ -39,7 +39,7 @@ class ROS2SerialNode(Node):
             10
         )
 
-        self.publisher = self.create_publisher(String, '/arduino_dat', 10)  # Publishes to another topic
+        self.publisher = self.create_publisher(String, '/arduino_data', 10)  # Publishes to another topic
 
 
         # Thread for continuous reading from the serial port
@@ -69,11 +69,12 @@ class ROS2SerialNode(Node):
             self.get_logger().info(f"Using Serial Data: {self.serial_data}")
             # Add your logic here to process or use the data
 
-            ################################
+            #############################################
+            #########DATA TO ARDUINO_DATA SUBSCRIBER NODE
             datato_pub = String()
             datato_pub.data = self.serial_data
             self.publisher.publish(datato_pub)    
-            ################################
+            #############################################
 
     def destroy_node(self):
         """Stop the serial thread and destroy the node."""
