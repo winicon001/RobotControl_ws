@@ -1,54 +1,40 @@
 #!/usr/bin/env python3
-import serial
 
+import time
+import time
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
 
-class reading:
-    def checkdist():
-        arduino_port = '/dev/ttyUSB1'  # Adjust this based on your actual port
-        baud_rate = '9600'
-        with serial.Serial(arduino_port, baud_rate) as ser:
-            # user_input = "1" # Start Data Reading from MPU6050
-            # ser.write(user_input.encode())
-            data = ser.readline().decode().strip()
-            print("Distance =  ", data)
-            return data
+class DataSubscriber(Node):
+    def __init__(self):
+        super().__init__('Arduino_DataReadout')
 
-    def checkdata():
-        arduino_port = '/dev/ttyUSB0'  # Adjust this based on your actual port
-        baud_rate = '115200'
-        with serial.Serial(arduino_port, baud_rate) as ser:
-            user_input = "1" # Start Data Reading from MPU6050
-            ser.write(user_input.encode())
-            data = ser.readline().decode().strip()
-            measuredValues = data.split(",")
-            # print(f"Received sensor values: {measuredValues}")
-            #print("distance: ", measuredValues[0],"Yaw: ", measuredValues[1])
-            return measuredValues
+        # Subscribe to the output topic
+        self.subscription = self.create_subscription(
+            String,
+            '/arduino_data',
+            self.callback,
+            10
+        )
 
-    
-    def receivedata():
-        ser = serial.Serial('/dev/ttyUSB0', 115200)  # Adjust port name as needed
-        user_input = "1" # Start Data Reading from MPU6050
-        ser.write(user_input.encode())
-        while True:
-            data = ser.readline().decode().strip()
-            measuredValues = data.split(",")
-            print(f"Received sensor values: {measuredValues}")
-            print("Yaw: ", measuredValues[0])    
+    def callback(self, msg):
+        # Process the data received
+        self.get_logger().info(f'Received final data: {msg.data}')
+        data_ = msg.data
+        return data_
 
+def readouts():
+    data_ = DataSubscriber.callback()
+    print(data_)
 
+def main(args=None):
+    rclpy.init(args=args)
+    node = DataSubscriber()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
 
 if __name__ == '__main__':
-    while True:
-        # reading.receivedata()
-        reading.checkdist()
-        # reading.checkdata2()
-
-
-#############################################################################
-##### To be updated for Smilebot#############################################
-
-
-#############################################################################
-
+    main()
 

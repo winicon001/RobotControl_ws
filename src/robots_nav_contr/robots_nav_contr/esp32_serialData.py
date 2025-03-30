@@ -37,4 +37,5 @@ def write_data():
 #     read_data()
 
 if __name__== '__main__':
-    read_data()
+    while 1:
+        read_data()

@@ -1,48 +1,21 @@
-#!/usr/bin/env python3
+import Archive.testbench
 
-import time
-import arduinosensorsdata
 
-import rclpy
-from rclpy.node import Node
-from std_msgs.msg import String
+data = Archive.testbench.readouts("sm", data)
 
-class DataSubscriber(Node):
-    def __init__(self):
-        super().__init__('Arduino_DataReadout')
+print(data)
 
-        # Subscribe to the output topic
-        self.subscription = self.create_subscription(
-            String,
-            '/arduino_data',
-            self.callback,
-            10
-        )
 
-    def callback(self, msg):
-        # Process the data received
-        self.get_logger().info(f'Received final data: {msg.data}')
+# while True:
 
-def main(args=None):
-    rclpy.init(args=args)
-    node = DataSubscriber()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+#     ################################
+#     # Arrang MPU6050 data
+#     ################################
 
-if __name__ == '__main__':
-    main()
-
-while True:
-
-    ################################
-    # Arrang MPU6050 data
-    ################################
-
-    arduino_read_values = arduinosensorsdata.reading.checkdata()
-    dist = arduino_read_values[0]
-    yaw = float(arduino_read_values[1])
-    pitch = float(arduino_read_values[2])
-    row = float(arduino_read_values[3])
+#     arduino_read_values = arduinosensorsdata.reading.checkdata()
+#     dist = arduino_read_values[0]
+#     yaw = float(arduino_read_values[1])
+#     pitch = float(arduino_read_values[2])
+#     row = float(arduino_read_values[3])
 
 
