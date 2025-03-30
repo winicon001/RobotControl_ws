@@ -1,20 +1,8 @@
-# RedEye Main Routine 
-# consisting of Move Routines and Sensors Readings
-# This is the routine that contain the basic premitive instructions logics 
-# of how RedEye interracts with the environment (sensing) and Positioning,
-# as well as interraction with other robots.
-
 from robots_nav_contr import encoders
 from robots_nav_contr import move
 import time
 import RPi.GPIO as GPIO
 from robots_nav_contr import arduinosensorsdata
-
-# import encoders
-# import move
-# import time
-# import RPi.GPIO as GPIO
-# import arduinosensorsdata
 
 speed = 50
 init_yaw = 0
@@ -24,17 +12,17 @@ arduinosensorsdata.reading.checkdata()
 print("Setting up sensors feed...Please wait")
 time.sleep(5)
 
-def robotmainroutine():
-    init_yaw = 0
 
+while True:
     # Encoders Readings
+
     arduino_read_values = arduinosensorsdata.reading.checkdata()
     dist = arduino_read_values[0]
     yaw = float(arduino_read_values[1])
     pitch = float(arduino_read_values[2])
     row = float(arduino_read_values[3])
 
-    
+      
 
 
     enc1 = encoders.enc()[0]       # Left Encoder instantaneous 
@@ -88,10 +76,8 @@ def robotmainroutine():
     else:
         # move.move(speed, direction = "forward", turn = "")
         init_yaw = true_yaw
-        move.move(speed, direction = "forward", turn = "right")
+        move.move(speed, direction = "forward", turn = "")
         data()
         
 
-if __name__== '__main__':
-    while True:
-        robotmainroutine()
+

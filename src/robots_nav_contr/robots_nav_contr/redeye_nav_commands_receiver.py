@@ -8,6 +8,8 @@ from robots_nav_contr import encoders
 import time
 import RPi.GPIO as GPIO
 from robots_nav_contr import ultra
+from robots_nav_contr import MainRoutine
+
 
 # robots_nav_contr
 
@@ -41,6 +43,10 @@ class AutoCommandReceiver(Node):
                 
                 move.move(100, 'backward', 'no', 1)
                 encoders.enc()
+
+            case "M":
+                print("...Main Routine Initiated...")
+                MainRoutine.robotmainroutine()
                 pass
 
             case "S":
