@@ -10,6 +10,7 @@ class AutoCommandReceiver(Node):
         super().__init__("dev_command_receiver")
         self.get_logger().info("...Node initiated. Robot # Listening to robot_auto_command Node...")
         self.receiver_ = self.create_subscription(String, '/auto_command', self.receiver_callback, 10) # Message type to receive, name of the topic to subscribe to and the buffer size
+                                                                                                       # Checking on the last update to the line
 
         self.count = 0
 
