@@ -39,7 +39,7 @@ class ROS2SerialNode(Node):
             10
         )
 
-        self.publisher = self.create_publisher(String, '/arduino_data', 10)  # Publishes to another topic
+        self.publisher = self.create_publisher(String, '/SmileBot_Arduino_data', 10)  # Publishes to another topic
 
 
         # Thread for continuous reading from the serial port
