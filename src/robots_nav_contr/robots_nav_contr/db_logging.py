@@ -18,7 +18,17 @@ def connect_to_mssql():
         
         # Example query
         cursor = connection.cursor()
+        query = 'SELECT * FROM [RobotsDB].[dbo].[db_test]'
+        cursor.execute(query)
+
+        rows = cursor.fetchall()
+
+        # print the data 
+        for row in rows:
+            print(row)
+        
         cursor.execute("SELECT @@VERSION;")
+        
         result = cursor.fetchone()
         print("SQL Server version:", result[0])
         

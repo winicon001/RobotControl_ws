@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 
+# This routine is to create overall logic for the robot's operation.
+# It subscribes to the topic /SmileBot_Arduino_data to read Arduino sensors Data
+# It also collates the sensors data  from arduino on topi SmileBot_Arduino_data
+# and sensor data from ESP32 on serial port, put them in structured arrays and assignemnt that 
+# can be used for commands, interlocks and control conditions
+
 import time
 import time
 import rclpy
 from rclpy.node import Node
+import rclpy.logging
 from std_msgs.msg import String
 from robots_nav_contr import esp32_serialData
 
@@ -14,6 +21,7 @@ import serial
 #################################################
 # MPU6050 Data YPR
 #################################################
+
 
 error_flag = False  # Error detection flag for transfered data
 
@@ -127,7 +135,8 @@ class DataSubscriber(Node):
                 self.get_logger().error('Error: IndexError occurred while accessing MPU6050 data.')
 
         else:
-            self.get_logger().warning('Warning: Data bundle from MPU6050 is empty or missing items.')
+            if not esp_data or len(esp_data) < 4:
+                self.get_logger().warning('Warning: Data bundle from MPU6050 is empty or missing items.')
 
 
         # Process the data received
@@ -198,7 +207,8 @@ class DataSubscriber(Node):
             except IndexError:
                 self.get_logger().error('Error: IndexError occurred while accessing Arduino data.')
         else:
-            self.get_logger().warning('Warning: Data bundle from Arduino is empty or missing items.')
+            if not esp_data or len(esp_data) < 6:
+                self.get_logger().warning('Warning: Data bundle from Arduino is empty or missing items.')
 
 
         ##############################################
@@ -220,22 +230,29 @@ class DataSubscriber(Node):
         return data_
 
 
-    
-    
+#########################################################
+######################## Logs ###########################
+Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')
+Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
+ESP32_Logs = rclpy.logging.get_logger('ESP32 LOGS')
+#########################################################
 
 
 
 def main(args=None):
-    print('.... Initialising ROS2 Node. Please Wait')
+    Routine_Message.info(' Initialising ROS2 Node. Please Wait')
+  
     time.sleep(2)
-    print('.... Starting Serial Comms to ESP32 Node. Initialisation in Progress')
+    Routine_Message.info('Starting Serial Comms to ESP32 Node. Initialisation in Progress')
+
     write_data()
     time.sleep(10)
-    print('.... Starting ROS2 Node ........')
+    Routine_Message.info('Starting ROS2 Node')
 
     rclpy.init(args=args)
     time.sleep(10)
-    print('....Emptying Wrong Buffer Data from ESP32 ........ Please wait While ROS Node starts')
+    Routine_Message.info('Emptying Wrong Buffer Data from ESP32')
+    Routine_Message.info('Please wait While ROS Node starts')
 
     node = DataSubscriber()
     rclpy.spin(node)
