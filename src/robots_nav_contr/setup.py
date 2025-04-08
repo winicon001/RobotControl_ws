@@ -24,6 +24,7 @@ setup(
             "robots_nav_controller = robots_nav_contr.robotsnavcontroller:main", # This is the robots command publisher. Used on dev pc
             "robot_command_receiver = robots_nav_contr.nav_commands_receiver:main", # This is the robots command subscriber. Used on dev pc
             "smilebot_commands = robots_nav_contr.smilebot_commands_Receiver:main", # This is the robots command subscriber. Used on smilebot
+            "smilebot_main = robots_nav_contr.Smilebot_MainRoutine:main", # This is the robots main routine. Used on smilebot
             "redeye_commands = robots_nav_contr.redeye_nav_commands_receiver:main", # This is the robots command subscriber. Used on redEye
             
         ],
