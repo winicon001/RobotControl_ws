@@ -1,3 +1,9 @@
+# This routine is the subscription routine for robot command received from the 
+# general robots command topic /auto_command. 
+# It also publishes the Data read on  Arduino serial port on /SmileBot_Arduino_data topic
+# 
+
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String

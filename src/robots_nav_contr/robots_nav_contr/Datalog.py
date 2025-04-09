@@ -20,7 +20,7 @@
 
 
 
-# import sqlite3
+import sqlite3
 import pyodbc
 import datetime
 from datetime import date
@@ -55,7 +55,7 @@ def connect_to_mssql(sensor_data):
         cursor = connection.cursor()
 
         # Create the table if it doesn't exist
-        table_name = f"{'RuntimeSensorsData'}_{date.today().strftime('%Y_%m_%d')}"
+        table_name = f"{'feeds110_data'}_{date.today().strftime('%Y_%m_%d')}"
         # Log the table name
         SQL_Logs.info(f"Table name: {table_name}")
         # Create a table with the current date in the name
@@ -81,13 +81,14 @@ def connect_to_mssql(sensor_data):
                     )
                 END
                 ''')
-
+            
+            
             # Confirmation message
             SQL_Logs.info(f"Table {table_name} created successfully.")
 
         # Insert sensor data into the table
         cursor.execute(
-            f"INSERT INTO {table_name} (ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2, ULTRASENSOR_DIST, YAW, PITCH, ROLL, timestamp) VALUES ( ?, ?, ?, ?, ?, ?, ? ?, ?, ?, CURRENT_TIMESTAMP)"
+            f"INSERT INTO {table_name} (ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2, ULTRASENSOR_DIST, YAW, PITCH, ROLL, timestamp) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)"
             , sensor_data)
         
         # Commit changes and close the connection
@@ -107,8 +108,8 @@ def connect_to_mssql(sensor_data):
 
 
 if __name__ == "__main__":
-    # Sample sensor data
-    sensor_data = [3203.92, 2.0, 13.8, 8320, 23, 2312, 3234, 320, 2.0, 13.8]
+
+    # Sample sensor 648
+    sensor_data = [50.92, 13.0, 12455.8, 8320, 3295, 2312, 234, 2.0, 25676.8, 27]
     # Call the function to connect to the database
-    
     connect_to_mssql(sensor_data)
