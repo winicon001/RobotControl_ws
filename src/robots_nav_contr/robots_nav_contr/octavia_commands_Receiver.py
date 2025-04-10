@@ -93,7 +93,7 @@ def main(args=None):
     rclpy.init(args=args)
 
     # Replace with your serial port (e.g., '/dev/ttyUSB0' or 'COM3') and baudrate
-    node = ROS2SerialNode(serial_port='/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', baudrate=9600)
+    node = ROS2SerialNode(serial_port='/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0', baudrate=9600)
 
     try:
         # Periodically use serial data elsewhere in the project
