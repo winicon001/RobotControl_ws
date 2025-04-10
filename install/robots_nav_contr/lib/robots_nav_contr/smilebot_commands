@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# EASY-INSTALL-ENTRY-SCRIPT: 'robots-nav-contr','console_scripts','smilebot_commands'
+# EASY-INSTALL-ENTRY-SCRIPT: 'robots-nav-contr','console_scripts','octavia_commands'
 import re
 import sys
 
@@ -30,4 +30,4 @@ globals().setdefault('load_entry_point', importlib_load_entry_point)
 
 if __name__ == '__main__':
     sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
-    sys.exit(load_entry_point('robots-nav-contr', 'console_scripts', 'smilebot_commands')())
+    sys.exit(load_entry_point('robots-nav-contr', 'console_scripts', 'octavia_commands')())

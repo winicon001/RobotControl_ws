@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # File name   : blink.py
 # Description : Blink and confirm inputs
-# Product     : smilebot  
+# Product     : octavia  
 # E-mail      : swinicon@live.com
 # Author      : Semiu ADEBAYO
 # Date        : 2024/08/15

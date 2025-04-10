@@ -1,4 +1,4 @@
-[2.895s] Invoking command in '/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr': PYTHONPATH=/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
+[2.895s] Invoking command in '/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr': PYTHONPATH=/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
 [4.104s] running develop
 [4.883s] running egg_info
 [4.884s] writing robots_nav_contr.egg-info/PKG-INFO
@@ -9,14 +9,14 @@
 [4.897s] reading manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
 [4.901s] writing manifest file 'robots_nav_contr.egg-info/SOURCES.txt'
 [4.907s] running build_ext
-[4.908s] Creating /home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)
-[4.912s] Installing redeye_commands script to /home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
-[4.913s] Installing robot_command_receiver script to /home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
-[4.914s] Installing robots_nav_controller script to /home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
-[4.915s] Installing smilebot_commands script to /home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[4.908s] Creating /home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages/robots-nav-contr.egg-link (link to .)
+[4.912s] Installing redeye_commands script to /home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[4.913s] Installing robot_command_receiver script to /home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[4.914s] Installing robots_nav_controller script to /home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
+[4.915s] Installing octavia_commands script to /home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/robots_nav_contr
 [4.916s] 
-[4.917s] Installed /home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr
+[4.917s] Installed /home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr
 [4.918s] running symlink_data
-[4.919s] symbolically linking /home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/resource/robots_nav_contr -> /home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages
-[4.920s] error: [Errno 17] File exists: '/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/resource/robots_nav_contr' -> '/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages/robots_nav_contr'
-[5.052s] Invoked command in '/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr' returned '1': PYTHONPATH=/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
+[4.919s] symbolically linking /home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/resource/robots_nav_contr -> /home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages
+[4.920s] error: [Errno 17] File exists: '/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/resource/robots_nav_contr' -> '/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/share/ament_index/resource_index/packages/robots_nav_contr'
+[5.052s] Invoked command in '/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr' returned '1': PYTHONPATH=/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data

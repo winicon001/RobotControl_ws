@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-# This code has been replaced by smilebot_rosdata
+# This code has been replaced by octavia_rosdata
 # This can still be used but serial data transfer hasnt been perfected as 
-# is in smilebot_rosdata
+# is in octavia_rosdata
 
 
 import rclpy
@@ -24,7 +24,7 @@ global sensorsdetails
 
 class AutoCommandReceiver(Node):
     def __init__(self):
-        super().__init__("smilebot_command_receiver")
+        super().__init__("octavia_command_receiver")
         self.get_logger().info("...Node initiated. Robot # Listening to robot_auto_command Node...")
         self.receiver_ = self.create_subscription(String, '/auto_command', self.receiver_callback, 10) # Message type to receive, name of the topic to subscribe to and the buffer size
         self.ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', 9600, timeout=5) #  Corresponding to /ttyUSB0

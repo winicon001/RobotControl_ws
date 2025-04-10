@@ -1,6 +1,6 @@
 # File name   : Datalog.py
 # Description : MSSQL Database Connection and Data Insertion
-# Product     : smilebot  
+# Product     : octavia  
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
 # Date        : 2024/04/04

@@ -1,6 +1,6 @@
 # File name   : encoders.py
 # Description : Python Wheel Encoder code for LM393 H2010
-# Product     : smilebot  
+# Product     : octavia  
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
 # Date        : 2024/08/15

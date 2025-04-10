@@ -16,7 +16,7 @@ robots_nav_contr/nav_commands_receiver.py
 robots_nav_contr/pinsValidation.py
 robots_nav_contr/redeye_nav_commands_receiver.py
 robots_nav_contr/robotsnavcontroller.py
-robots_nav_contr/smilebot_commands_Receiver.py
+robots_nav_contr/octavia_commands_Receiver.py
 robots_nav_contr/ultra.py
 robots_nav_contr.egg-info/PKG-INFO
 robots_nav_contr.egg-info/SOURCES.txt

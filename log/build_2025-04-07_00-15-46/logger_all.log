@@ -6,7 +6,7 @@
 [1.458s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
 [1.459s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
 [1.459s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
-[1.459s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/winicon/smilebot_ws/src/RobotControl_ws'
+[1.459s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/winicon/octavia_ws/src/RobotControl_ws'
 [1.460s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
 [1.461s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
 [1.461s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
@@ -70,7 +70,7 @@
 [1.553s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
 [1.640s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
 [1.640s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
-[1.657s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/winicon/smilebot_ws/install
+[1.657s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/winicon/octavia_ws/install
 [1.667s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 271 installed packages in /opt/ros/humble
 [1.713s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
 [1.908s] Level 5:colcon.colcon_core.verb:set package 'robots_nav_contr' build argument 'cmake_args' from command line to 'None'
@@ -82,22 +82,22 @@
 [1.909s] Level 5:colcon.colcon_core.verb:set package 'robots_nav_contr' build argument 'ament_cmake_args' from command line to 'None'
 [1.909s] Level 5:colcon.colcon_core.verb:set package 'robots_nav_contr' build argument 'catkin_cmake_args' from command line to 'None'
 [1.909s] Level 5:colcon.colcon_core.verb:set package 'robots_nav_contr' build argument 'catkin_skip_building_tests' from command line to 'False'
-[1.909s] DEBUG:colcon.colcon_core.verb:Building package 'robots_nav_contr' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr', 'merge_install': False, 'path': '/home/winicon/smilebot_ws/src/RobotControl_ws/src/robots_nav_contr', 'symlink_install': True, 'test_result_base': None}
+[1.909s] DEBUG:colcon.colcon_core.verb:Building package 'robots_nav_contr' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr', 'merge_install': False, 'path': '/home/winicon/octavia_ws/src/RobotControl_ws/src/robots_nav_contr', 'symlink_install': True, 'test_result_base': None}
 [1.910s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
 [1.914s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
-[1.915s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/winicon/smilebot_ws/src/RobotControl_ws/src/robots_nav_contr' with build type 'ament_python'
+[1.915s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/winicon/octavia_ws/src/RobotControl_ws/src/robots_nav_contr' with build type 'ament_python'
 [1.916s] Level 1:colcon.colcon_core.shell:create_environment_hook('robots_nav_contr', 'ament_prefix_path')
 [1.931s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
-[1.932s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr/hook/ament_prefix_path.ps1'
-[1.936s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr/hook/ament_prefix_path.dsv'
-[1.940s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr/hook/ament_prefix_path.sh'
+[1.932s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr/hook/ament_prefix_path.ps1'
+[1.936s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr/hook/ament_prefix_path.dsv'
+[1.940s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/share/robots_nav_contr/hook/ament_prefix_path.sh'
 [1.945s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
 [1.946s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
-[3.172s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/winicon/smilebot_ws/src/RobotControl_ws/src/robots_nav_contr'
+[3.172s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/winicon/octavia_ws/src/RobotControl_ws/src/robots_nav_contr'
 [3.173s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
 [3.173s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
-[4.811s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr': PYTHONPATH=/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
-[6.968s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr' returned '1': PYTHONPATH=/home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/smilebot_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/smilebot_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
+[4.811s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr': PYTHONPATH=/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
+[6.968s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr' returned '1': PYTHONPATH=/home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/winicon/octavia_ws/src/RobotControl_ws/install/robots_nav_contr/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/winicon/octavia_ws/src/RobotControl_ws/build/robots_nav_contr/build --no-deps symlink_data
 [6.977s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
 [6.978s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
 [6.978s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '1'
@@ -107,13 +107,13 @@
 [7.010s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
 [7.060s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.Notifications exited with status 1
 [7.060s] DEBUG:colcon.colcon_core.event_reactor:joined thread
-[7.061s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/local_setup.ps1'
-[7.066s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/winicon/smilebot_ws/src/RobotControl_ws/install/_local_setup_util_ps1.py'
-[7.076s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/setup.ps1'
-[7.085s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/local_setup.sh'
-[7.091s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/winicon/smilebot_ws/src/RobotControl_ws/install/_local_setup_util_sh.py'
-[7.094s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/setup.sh'
-[7.101s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/local_setup.bash'
-[7.105s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/setup.bash'
-[7.110s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/local_setup.zsh'
-[7.114s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/smilebot_ws/src/RobotControl_ws/install/setup.zsh'
+[7.061s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/octavia_ws/src/RobotControl_ws/install/local_setup.ps1'
+[7.066s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/winicon/octavia_ws/src/RobotControl_ws/install/_local_setup_util_ps1.py'
+[7.076s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/octavia_ws/src/RobotControl_ws/install/setup.ps1'
+[7.085s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/octavia_ws/src/RobotControl_ws/install/local_setup.sh'
+[7.091s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/winicon/octavia_ws/src/RobotControl_ws/install/_local_setup_util_sh.py'
+[7.094s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/octavia_ws/src/RobotControl_ws/install/setup.sh'
+[7.101s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/octavia_ws/src/RobotControl_ws/install/local_setup.bash'
+[7.105s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/octavia_ws/src/RobotControl_ws/install/setup.bash'
+[7.110s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/winicon/octavia_ws/src/RobotControl_ws/install/local_setup.zsh'
+[7.114s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/winicon/octavia_ws/src/RobotControl_ws/install/setup.zsh'

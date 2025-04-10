@@ -1,6 +1,6 @@
 # This routine is the subscription routine for robot command received from the 
 # general robots command topic /auto_command. 
-# It also publishes the Data read on  Arduino serial port on /SmileBot_Arduino_data topic
+# It also publishes the Data read on  Arduino serial port on /octavia_Arduino_data topic
 # 
 
 
@@ -32,7 +32,7 @@ class SerialHandler:
 class ROS2SerialNode(Node):
     def __init__(self, serial_port, baudrate):
         """Initialize the ROS2 node and serial handler."""
-        super().__init__('smilebot_command_receiver')
+        super().__init__('octavia_command_receiver')
 
         # Set up the serial handler
         self.serial_handler = SerialHandler(serial_port, baudrate)
@@ -45,7 +45,7 @@ class ROS2SerialNode(Node):
             10
         )
 
-        self.publisher = self.create_publisher(String, '/SmileBot_Arduino_data', 10)  # Publishes to another topic
+        self.publisher = self.create_publisher(String, '/octavia_Arduino_data', 10)  # Publishes to another topic
 
 
         # Thread for continuous reading from the serial port

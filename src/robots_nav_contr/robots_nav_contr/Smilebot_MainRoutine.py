@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# File name   : Smilebot_MainRoutine.py
+# File name   : octavia_MainRoutine.py
 # Description : Main Robot Routine
-# Product     : smilebot  
+# Product     : octavia  
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
 # Date        : 2025/04/04
@@ -10,8 +10,8 @@
                 # This script is used to read data from an Arduino and ESP32, process the data, and log it.
 #               # It uses the rclpy library for ROS2 communication and pyodbc for database connection.
 #               # The script includes error handling and logging to provide information about the connection status, data processing, and any errors that occur.This routine is to create overall logic for the robot's operation.
-                # It subscribes to the topic /SmileBot_Arduino_data to read Arduino sensors Data
-                # It also collates the sensors data  from arduino on topi SmileBot_Arduino_data
+                # It subscribes to the topic /octavia_Arduino_data to read Arduino sensors Data
+                # It also collates the sensors data  from arduino on topi octavia_Arduino_data
                 # and sensor data from ESP32 on serial port, put them in structured arrays and assignemnt that 
                 # can be used for commands, interlocks and control conditions
 
@@ -96,7 +96,7 @@ class DataSubscriber(Node):
         # Subscribe to the output topic
         self.subscription = self.create_subscription(
             String,
-            '/SmileBot_Arduino_data',
+            '/octavia_Arduino_data',
             self.callback,
             10
         )
