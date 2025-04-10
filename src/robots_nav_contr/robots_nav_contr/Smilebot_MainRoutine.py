@@ -5,7 +5,7 @@
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
 # Date        : 2025/04/04
-# credit      : Copyright (c) 2024 Semiu ADEBAYO
+# credit      : Copyright (c) 2025 Semiu ADEBAYO
 # Description : 
                 # This script is used to read data from an Arduino and ESP32, process the data, and log it.
 #               # It uses the rclpy library for ROS2 communication and pyodbc for database connection.

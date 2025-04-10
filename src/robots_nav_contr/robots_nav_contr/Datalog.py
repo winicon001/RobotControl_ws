@@ -3,8 +3,8 @@
 # Product     : smilebot  
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
-# Date        : 2024/04/04
-# credit      : Copyright (c) 2024 Semiu ADEBAYO; Copilot 
+# Date        : 2025/04/04
+# credit      : Copyright (c) 2025 Semiu ADEBAYO; Copilot 
 # Description : 
 
         # This script is used to connect to a Microsoft SQL Server database and insert sensor data into a table.
