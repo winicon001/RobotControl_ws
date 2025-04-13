@@ -51,23 +51,50 @@ ser.write(bytes(startup_command.encode("utf-8")))  # Send data to ESP32 to start
 # Read Data from ESP32
 def read_data():
     values = ser.readline()
+
+
     if isinstance(values, bytes):
         try:
+            # Decode the byte object to a string
             decoded_value = values.decode('utf-8', errors='ignore')  # Ignore errors and noice in sensor data
-        except UnicodeDecodeError:
-            print("Invalid data detected.")
+
+            # Clean the decoded string           
+            cleaned_value = decoded_value.strip()  # Remove leading and trailing whitespace
+            cleaned_value = cleaned_value.replace('\r', '')  # Remove carriage return characters
+            cleaned_value = cleaned_value.replace('\n', '')  # Remove newline characters
+            ESP32_Logs.info('Valid and printable Data received.')
+            ESP32_Logs.info('Decoded data packet from ESP32 successfully')
+            
+        except AttributeError:
+            ESP32_Logs.warning('Attribute Error: Failed to decode the byte object.')
+            # decoded_value = None
+            
             error_flag = True
-        else:
-            error_flag = False
-            print("Not a byte object.")
+        except TypeError:
+            ESP32_Logs.warning('Type Error: Failed to decode the byte object.')
+            # decoded_value = None
+            error_flag = True
+        except ValueError:
+            ESP32_Logs.warning('Value Error: Failed to decode the byte object.')
+            # decoded_value = None
+            error_flag = True
+        except OverflowError:
+            ESP32_Logs.warning('Overflow Error: Failed to decode the byte object.')
+            # decoded_value = None            
+            error_flag = True
+        except IndexError:
+            ESP32_Logs.warning('Index Error: Failed to decode the byte object.')
+            # decoded_value = None            
+            error_flag = True
+        except UnicodeDecodeError:
+            ESP32_Logs.warning('Uninicode Error: Failed to decode the byte object.')
+            # decoded_value = None            
+            error_flag = True
+    else:
+        error_flag = False
+        # decoded_value = None
+        ESP32_Logs.error('Error: Received data is not a byte object.')
 
-    cleaned_value = decoded_value.strip()  # Remove leading and trailing whitespace
-    cleaned_value = cleaned_value.replace('\r', '')  # Remove carriage return characters
-    cleaned_value = cleaned_value.replace('\n', '')  # Remove newline characters
-
-
-    print(cleaned_value)
-    # print ("Read Gyro data: " + decoded_value + " from ESP32", end='\n')
     return cleaned_value
 
 # Write Data to ESP32
@@ -126,41 +153,51 @@ class DataSubscriber(Node):
         data_bundle = len(esp_values) # Length of data from Arduino
 
         # Sample sensor data
-        sample_data = [3203.92, 12.0, 13.8, 8320, 128, 2312, 320, 2.0, 13.8, 3487]
+        sample_data =  [151, 154, 454, 57963, 25, 455, 50.92, 13.0, 12455.8, 8320, 3295, 2312, 234, 2.0, 25676.8, 27]
 
         # Check that data from ESP32 exists and not empty
         if len(esp_values) > 1:
             try:
-                if len(esp_values) > 3:
-                    self.get_logger().info(f'Received complete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
+                if len(esp_values) > 15:
+                    ESP32_Logs.info(f'Received complete data from esp32. Items in the List Received : {data_bundle}')
                     ULTRASENSOR_DIST = esp_values[0]
                     YAW              = esp_values[1]
                     PITCH            = esp_values[2]
                     ROLL             = esp_values[3]
+                    ENC_TOTAL_COUNT_L = esp_values[4]
+                    ENC_TOTAL_COUNT_R = esp_values[5]
+                    COUNTER_L         = esp_values[6]
+                    COUNTER_R         = esp_values[7]
+                    rotation1         = esp_values[8]
+                    rotation2         = esp_values[9]
+                    speed_L           = esp_values[10]
+                    speed_R           = esp_values[11]
+                    dist_L            = esp_values[12]
+                    dist_R            = esp_values[13]
+                    totalDist_L       = esp_values[14]
+                    totalDist_R       = esp_values[15]
 
                 # Data Error Correction
                 else:
-                    if len(esp_values) == 3:
-                        self.get_logger().warning(f'Warning!. Incomplete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
-                        ULTRASENSOR_DIST = esp_values[0]
-                        YAW              = esp_values[1]
-                        PITCH            = esp_values[2]
-                        ROLL             = 0.0
-                    if len(esp_values) == 2:
-                        ULTRASENSOR_DIST = esp_values[0]
-                        YAW              = esp_values[1]
-                        PITCH            = 0.0
-                        ROLL             = 0.0
-                    if len(esp_values) == 1:
-                        ULTRASENSOR_DIST = esp_values[0]
+                    if len(esp_values) < 16:
+                        ESP32_Logs.warning(f'Warning!. Incomplete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
+                        ESP32_Logs.warning(f'Warning!. Data Received: {esp_values}')
+                        ULTRASENSOR_DIST = 0.0   
                         YAW              = 0.0
                         PITCH            = 0.0
                         ROLL             = 0.0
-                    if len(esp_values) == 0:
-                        ULTRASENSOR_DIST = 0.0
-                        YAW              = 0.0
-                        PITCH            = 0.0
-                        ROLL             = 0.0
+                        ENC_TOTAL_COUNT_L = 0.0
+                        ENC_TOTAL_COUNT_R = 0.0
+                        COUNTER_L         = 0.0
+                        COUNTER_R         = 0.0
+                        rotation1         = 0.0
+                        rotation2         = 0.0         
+                        speed_L           = 0.0
+                        speed_R           = 0.0
+                        dist_L            = 0.0
+                        dist_R            = 0.0
+                        totalDist_L       = 0.0
+                        totalDist_R       = 0.0
 
                 
                 # Assign the values to the class variables
@@ -168,9 +205,37 @@ class DataSubscriber(Node):
                 self.YAW = YAW
                 self.PITCH = PITCH
                 self.ROLL = ROLL
+                self.ENC_TOTAL_COUNT_L = ENC_TOTAL_COUNT_L
+                self.ENC_TOTAL_COUNT_R = ENC_TOTAL_COUNT_R
+                self.COUNTER_L = COUNTER_L
+                self.COUNTER_R = COUNTER_R
+                self.rotation1 = rotation1
+                self.rotation2 = rotation2
+                self.speed_L = speed_L
+                self.speed_R = speed_R
+                self.dist_L = dist_L
+                self.dist_R = dist_R
+                self.totalDist_L = totalDist_L
+                self.totalDist_R = totalDist_R  
+
                 # Create a data bundle
                 # ESP32 data
-                self.esp_data = [ULTRASENSOR_DIST, YAW, PITCH, ROLL]
+                self.esp_data = [ULTRASENSOR_DIST, 
+                                 YAW, PITCH, ROLL,
+                                ENC_TOTAL_COUNT_L,
+                                ENC_TOTAL_COUNT_R,
+                                COUNTER_L,
+                                COUNTER_R,
+                                rotation1,
+                                rotation2,  
+                                speed_L,
+                                speed_R,
+                                dist_L,
+                                dist_R,
+                                totalDist_L,
+                                totalDist_R
+                                ][:16]  # Limit to 15 items to avoid overflow
+  
 
             except IndexError:
                 self.get_logger().error('Error: IndexError occurred while accessing MPU6050 data.')
@@ -178,126 +243,6 @@ class DataSubscriber(Node):
         else:
             if not esp_data or len(esp_data) < 4:
                 self.get_logger().warning('Warning: Data bundle from MPU6050 is empty or missing items.')
-
-
-        # Process the data received
-        self.get_logger().info(f'Received final data: {msg.data}')
-
-        # Split Arduino the data into component parts        
-        data_ = msg.data
-        data_ = data_ if data_ else [] # Use empty array If data is not available 
-
-        measuredValues = data_.split(",")
-        data_bundle2 = len(measuredValues) # Length of data from Arduino
-
-         # Check that data from Arduino exists and not empty
-        if data_bundle2 > 1:
-            try:
-                if data_bundle2 > 11:
-                    self.get_logger().info(f'Received complete Arduino data. Items in the List Received : {data_bundle2}')
-                    ENC_TOTAL_COUNT_L = measuredValues[0]
-                    ENC_TOTAL_COUNT_R = measuredValues[1]
-                    COUNTER_L = measuredValues[2]
-                    COUNTER_R = measuredValues[3]
-                    rotation1 = measuredValues[4]
-                    rotation2 = measuredValues[5]
-                    speed_L           = esp_values[6]
-                    speed_R           = esp_values[7]
-                    dist_L            = esp_values[8]
-                    dist_R            = esp_values[9]
-                    totalDist_L       = esp_values[10]
-                    totalDist_R       = esp_values[11]
-
-                # Data Error Correction
-                else:
-                    if data_bundle2 == 5:
-                        self.get_logger().warning(f'Warning!. Incomplete Arduino Data. Items in the List Received : {data_bundle2}')
-                        ENC_TOTAL_COUNT_L = measuredValues[0]
-                        ENC_TOTAL_COUNT_R = measuredValues[1]
-                        COUNTER_L = measuredValues[2]
-                        COUNTER_R = measuredValues[3]
-                        rotation1 = measuredValues[4]
-                        rotation2 = 0.0
-                    if data_bundle2 == 4:
-                        self.get_logger().warning(f'Warning!. Incomplete Arduino data. Items in the List Received : {data_bundle2}')
-                        ENC_TOTAL_COUNT_L = measuredValues[0]
-                        ENC_TOTAL_COUNT_R = measuredValues[1]
-                        COUNTER_L = measuredValues[2]
-                        COUNTER_R = measuredValues[3]
-                        rotation1 = 0.0
-                        rotation2 = 0.0
-                    if data_bundle2 == 3:
-                        self.get_logger().warning(f'Warning!. Incomplete Arduino data. Items in the List Received : {data_bundle2}')
-                        ENC_TOTAL_COUNT_L = measuredValues[0]
-                        ENC_TOTAL_COUNT_R = measuredValues[1]
-                        COUNTER_L = measuredValues[2]
-                        COUNTER_R = 0.0
-                        rotation1 = 0.0
-                        rotation2 = 0.0
-                    if data_bundle2 == 2:
-                        self.get_logger().warning(f'Warning!. Incomplete Arduino data. Items in the List Received : {data_bundle2}')
-                        ENC_TOTAL_COUNT_L = measuredValues[0]
-                        ENC_TOTAL_COUNT_R = measuredValues[1]
-                        COUNTER_L = 0.0
-                        COUNTER_R = 0.0
-                        rotation1 = 0.0
-                        rotation2 = 0.0
-
-                    if data_bundle2 == 1:
-                        self.get_logger().warning(f'Warning!. Incomplete Arduino data. Items in the List Received : {data_bundle2}')
-                        ENC_TOTAL_COUNT_L = measuredValues[0]
-                        ENC_TOTAL_COUNT_R = 0.0
-                        COUNTER_L = 0.0
-                        COUNTER_R = 0.0
-                        rotation1 = 0.0
-                        rotation2 = 0.0
-            
-
-                
-                # Assign the values to the class variables
-                self.ENC_TOTAL_COUNT_L = ENC_TOTAL_COUNT_L
-                self.ENC_TOTAL_COUNT_R = ENC_TOTAL_COUNT_R
-                self.COUNTER_L = COUNTER_L
-                self.COUNTER_R = COUNTER_R
-                self.rotation1 = rotation1
-                self.rotation2 = rotation2
-                       
-                # Create a data bundle
-                # Arduino data
-                self.arduino_data = [ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2]
-            # Process the data received
-            except IndexError:
-                self.get_logger().error('Error: IndexError occurred while accessing Arduino data.')
-        else:
-            if not esp_data or len(esp_data) < 6:
-                self.get_logger().warning('Warning: Data bundle from Arduino is empty or missing items.')
-
-        combined_data = [
-            ENC_TOTAL_COUNT_L,
-            ENC_TOTAL_COUNT_R,
-            COUNTER_L,
-            COUNTER_R,
-            rotation1,
-            rotation2,
-            speed_L,
-            speed_R,
-            dist_L,
-            dist_R,
-            totalDist_L,
-            totalDist_R,
-            ULTRASENSOR_DIST,
-            YAW,
-            PITCH,
-            ROLL
-        ]
-
-        print ("Combined Data : ", combined_data)
-
-        ##############################################
-        self.get_logger().info(f'Data from Arduino {self.arduino_data}')
-        self.get_logger().info(f'Data from ESP32 {self.esp_data}')
-        self.get_logger().info(f'Combined Data from Arduino and ESP32 {combined_data}')
-
 
 
         # Generate Robot Details
@@ -321,6 +266,9 @@ class DataSubscriber(Node):
         Datalog.connect_to_mssql(log_Data)
 
 
+
+        # Print the data to the console
+
         print("enc_L : ", ENC_TOTAL_COUNT_L, '|', end = ' ')
         print("enc_R : ", ENC_TOTAL_COUNT_R, '|', end = ' ')
         print("count_L : ", COUNTER_L, '|', end = ' ')
@@ -334,7 +282,7 @@ class DataSubscriber(Node):
         print("Roll : ", esp_values[3])
 
         print(esp_values)
-        return data_
+        # return data_
         
 
 
