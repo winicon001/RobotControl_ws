@@ -3,7 +3,7 @@
 # Product     : octavia  
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
-# Date        : 2024/04/04
+# Date        : 2025/04/04
 # credit      : Copyright (c) 2024 Semiu ADEBAYO; Copilot 
 # Description : 
 
@@ -55,7 +55,7 @@ def connect_to_mssql(sensor_data):
         cursor = connection.cursor()
 
         # Create the table if it doesn't exist
-        table_name = f"{'feeds110_data'}_{date.today().strftime('%Y_%m_%d')}"
+        table_name = f"{'datalogs3'}_{date.today().strftime('%Y_%m_%d')}"
         # Log the table name
         SQL_Logs.info(f"Table name: {table_name}")
         # Create a table with the current date in the name
@@ -67,12 +67,24 @@ def connect_to_mssql(sensor_data):
                 BEGIN
                     CREATE TABLE [{table_name}] (
                         id INT IDENTITY(1,1) PRIMARY KEY,
+                        robotName VARCHAR(50),
+                        robotID VARCHAR(50),
+                        robotType VARCHAR(50),
+                        robotVersion VARCHAR(50),
+                        robotSerial VARCHAR(50),
+                        robotManufacturer VARCHAR(50),
                         ENC_TOTAL_COUNT_L FLOAT,
                         ENC_TOTAL_COUNT_R FLOAT,
                         COUNTER_L FLOAT,
                         COUNTER_R FLOAT,
                         rotation1 FLOAT,
                         rotation2 FLOAT,
+                        speed_L FLOAT,
+                        speed_R FLOAT,
+                        dist_L FLOAT,
+                        dist_R FLOAT,
+                        totalDist_L FLOAT,
+                        totalDist_R FLOAT,
                         ULTRASENSOR_DIST FLOAT,
                         YAW FLOAT,
                         PITCH FLOAT,
@@ -88,7 +100,7 @@ def connect_to_mssql(sensor_data):
 
         # Insert sensor data into the table
         cursor.execute(
-            f"INSERT INTO {table_name} (ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2, ULTRASENSOR_DIST, YAW, PITCH, ROLL, timestamp) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)"
+            f"INSERT INTO {table_name} (robotName, robotID, robotType, robotVersion, robotSerial, robotManufacturer, ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2, speed_L, speed_R, dist_L, dist_R, totalDist_L, totalDist_R, ULTRASENSOR_DIST, YAW, PITCH, ROLL, timestamp) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)"
             , sensor_data)
         
         # Commit changes and close the connection
@@ -110,6 +122,6 @@ def connect_to_mssql(sensor_data):
 if __name__ == "__main__":
 
     # Sample sensor 648
-    sensor_data = [50.92, 13.0, 12455.8, 8320, 3295, 2312, 234, 2.0, 25676.8, 27]
+    sensor_data = ['Me', 'Take', 'Oscar', 'If', 'Press', 'One',  151, 154, 454, 57963, 25, 455, 50.92, 13.0, 12455.8, 8320, 3295, 2312, 234, 2.0, 25676.8, 27]
     # Call the function to connect to the database
     connect_to_mssql(sensor_data)
