@@ -27,12 +27,13 @@ from robots_nav_contr import Datalog
 ################################################################
 
 import serial
+global esp_data
 
 robotName = "octavia"  # Robot Name
 robotID = "001"  # Robot ID
 robotType = "octavia"  # Robot Type
 robotVersion = "v1.0"  # Robot Version
-robotSerial = "PRX3ONQTSEM"  # Robot Serial Number
+robotSerial = "PRX3OQTSEM"  # Robot Serial Number
 robotManufacturer = "WiniCon"  # Robot Manufacturer
 
 #################################################
@@ -49,26 +50,55 @@ ser.write(bytes(startup_command.encode("utf-8")))  # Send data to ESP32 to start
                                                    # default MPU6050 sketch which look for a starting command of any character over the serial line.
 
 # Read Data from ESP32
+# Read Data from ESP32
 def read_data():
     values = ser.readline()
+
+
     if isinstance(values, bytes):
         try:
+            # Decode the byte object to a string
             decoded_value = values.decode('utf-8', errors='ignore')  # Ignore errors and noice in sensor data
-        except UnicodeDecodeError:
-            print("Invalid data detected.")
+
+            # Clean the decoded string           
+            cleaned_value = decoded_value.strip()  # Remove leading and trailing whitespace
+            cleaned_value = cleaned_value.replace('\r', '')  # Remove carriage return characters
+            cleaned_value = cleaned_value.replace('\n', '')  # Remove newline characters
+            ESP32_Logs.info('Valid and printable Data received.')
+            ESP32_Logs.info('Decoded data packet from ESP32 successfully')
+            
+        except AttributeError:
+            ESP32_Logs.warning('Attribute Error: Failed to decode the byte object.')
+            # decoded_value = None
+            
             error_flag = True
-        else:
-            error_flag = False
-            print("Not a byte object.")
+        except TypeError:
+            ESP32_Logs.warning('Type Error: Failed to decode the byte object.')
+            # decoded_value = None
+            error_flag = True
+        except ValueError:
+            ESP32_Logs.warning('Value Error: Failed to decode the byte object.')
+            # decoded_value = None
+            error_flag = True
+        except OverflowError:
+            ESP32_Logs.warning('Overflow Error: Failed to decode the byte object.')
+            # decoded_value = None            
+            error_flag = True
+        except IndexError:
+            ESP32_Logs.warning('Index Error: Failed to decode the byte object.')
+            # decoded_value = None            
+            error_flag = True
+        except UnicodeDecodeError:
+            ESP32_Logs.warning('Uninicode Error: Failed to decode the byte object.')
+            # decoded_value = None            
+            error_flag = True
+    else:
+        error_flag = False
+        # decoded_value = None
+        ESP32_Logs.error('Error: Received data is not a byte object.')
 
-    cleaned_value = decoded_value.strip()  # Remove leading and trailing whitespace
-    cleaned_value = cleaned_value.replace('\r', '')  # Remove carriage return characters
-    cleaned_value = cleaned_value.replace('\n', '')  # Remove newline characters
-
-
-    print(cleaned_value)
-    # print ("Read Gyro data: " + decoded_value + " from ESP32", end='\n')
     return cleaned_value
+
 
 # Write Data to ESP32
 def write_data():
@@ -205,7 +235,7 @@ class DataSubscriber(Node):
                                 dist_R,
                                 totalDist_L,
                                 totalDist_R
-                                ][:16]  # Limit to 15 items to avoid overflow
+                                ][:16]  # Limit to 16 items to avoid overflow
   
 
             except IndexError:
@@ -250,6 +280,7 @@ class DataSubscriber(Node):
         print("Roll : ", esp_values[3])
 
         print(esp_values)
+        return esp_values
         
         
 
