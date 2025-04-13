@@ -28,6 +28,13 @@ from robots_nav_contr import Datalog
 
 import serial
 
+robotName = "SmileBot"  # Robot Name
+robotID = "002"  # Robot ID
+robotType = "SmileBot"  # Robot Type
+robotVersion = "v1.0"  # Robot Version
+robotSerial = "SPC40LPTSEM"  # Robot Serial Number
+robotManufacturer = "WiniCon"  # Robot Manufacturer
+
 #################################################
 # MPU6050 Data YPR
 #################################################
@@ -87,6 +94,12 @@ class DataSubscriber(Node):
     COUNTER_R = 0.0
     rotation1 = 0.0
     rotation2 = 0.0
+
+    speed_L  = 0.0
+    speed_R  = 0.0
+    dist_L   = 0.0
+    totalDist_L = 0.0
+    totalDist_R = 0.0
 
 
 
@@ -180,7 +193,7 @@ class DataSubscriber(Node):
          # Check that data from Arduino exists and not empty
         if data_bundle2 > 1:
             try:
-                if data_bundle2 > 5:
+                if data_bundle2 > 11:
                     self.get_logger().info(f'Received complete Arduino data. Items in the List Received : {data_bundle2}')
                     ENC_TOTAL_COUNT_L = measuredValues[0]
                     ENC_TOTAL_COUNT_R = measuredValues[1]
@@ -188,6 +201,12 @@ class DataSubscriber(Node):
                     COUNTER_R = measuredValues[3]
                     rotation1 = measuredValues[4]
                     rotation2 = measuredValues[5]
+                    speed_L           = esp_values[6]
+                    speed_R           = esp_values[7]
+                    dist_L            = esp_values[8]
+                    dist_R            = esp_values[9]
+                    totalDist_L       = esp_values[10]
+                    totalDist_R       = esp_values[11]
 
                 # Data Error Correction
                 else:
@@ -260,6 +279,12 @@ class DataSubscriber(Node):
             COUNTER_R,
             rotation1,
             rotation2,
+            speed_L,
+            speed_R,
+            dist_L,
+            dist_R,
+            totalDist_L,
+            totalDist_R,
             ULTRASENSOR_DIST,
             YAW,
             PITCH,
@@ -274,7 +299,26 @@ class DataSubscriber(Node):
         self.get_logger().info(f'Combined Data from Arduino and ESP32 {combined_data}')
 
 
-        Datalog.connect_to_mssql(sensor_data=combined_data)
+
+        # Generate Robot Details
+        robot_details = [robotName,
+                         robotID,
+                         robotType,
+                         robotVersion,
+                         robotSerial,
+                         robotManufacturer]
+
+        ##############################################
+        # self.get_logger().info(f'Data from Arduino {self.arduino_data}')
+        self.get_logger().info(f'Data from ESP32 {self.esp_data}')
+
+        # Data to Log   
+        log_Data = [*robot_details,
+                    *self.esp_data,
+                    ]
+
+
+        Datalog.connect_to_mssql(log_Data)
 
 
         print("enc_L : ", ENC_TOTAL_COUNT_L, '|', end = ' ')
