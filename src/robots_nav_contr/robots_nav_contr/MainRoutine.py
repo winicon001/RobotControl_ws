@@ -80,18 +80,17 @@ def robotmainroutine():
 
 
     # Change obstacle distance based on environmental features
-    if (obstacle_dist <=20.0):
-        if true_yaw < 90:
-            move.move(speed, direction = "backward", turn = "left")
-            data()
-
+    if obstacle_dist <= 25.0:
+        move.move(speed, direction="backward", turn="left")
+        data()
+        return
+   
     else:
-        # move.move(speed, direction = "forward", turn = "")
+        move.move(speed, direction = "forward", turn = "")
         init_yaw = true_yaw
-        move.move(speed, direction = "forward", turn = "right")
+        # move.move(speed, direction = "forward", turn = "right")
         data()
         
 
 if __name__== '__main__':
-    while True:
-        robotmainroutine()
+    robotmainroutine()

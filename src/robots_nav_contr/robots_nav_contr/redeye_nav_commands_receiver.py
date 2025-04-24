@@ -9,14 +9,14 @@ import time
 import RPi.GPIO as GPIO
 from robots_nav_contr import ultra
 from robots_nav_contr import MainRoutine
+import threading
 
 
 # robots_nav_contr
-
+speed = 0
 
 class AutoCommandReceiver(Node):
     
-
     def __init__(self):
         super().__init__("redeye_command_receiver")
         self.get_logger().info("...Node initiated. Redeye Listening to robot_auto_command Node...")
@@ -24,10 +24,41 @@ class AutoCommandReceiver(Node):
 
         self.count = 0
         self.controlFlag = False
+        self.last_command = None
+
+    def continuous_movement(self):
+        print("...Continuous Movement and Data Gathering Initiated...")
+        while self.controlFlag:
+            MainRoutine.robotmainroutine()
+            
+            enc1, enc1Total, Rev_L, dist_L = encoders.enc()
+            time.sleep(0.1)
+
+            # Allow ROS to process new messages
+            rclpy.spin_once(self, timeout_sec=0.1)
+
+            if not self.controlFlag:
+                print("Exiting Continuous Movement and Data Gathering.")
+                break
 
     def receiver_callback(self, msg: String):
         self.get_logger().info(f"Received {msg.data}")
         command = msg.data
+
+        def continuous_movement(self):
+            print("...Continuous Movement and Data Gathering Initiated...")
+            while self.controlFlag:
+                MainRoutine.robotmainroutine()
+                
+                # enc1, enc1Total, Rev_L, dist_L = encoders.enc()
+                time.sleep(0.1)
+
+                # Allow ROS to process new messages
+                rclpy.spin_once(self, timeout_sec=0.1)
+
+                if not self.controlFlag:
+                    print("Exiting Continuous Movement and Data Gathering.")
+                    pass
 
         move.setup()
         match command:
@@ -38,27 +69,30 @@ class AutoCommandReceiver(Node):
             case "":
                 print("Say again Please")
 
-            case "F":
-                print("Okay, Program started")
-                
-                move.move(100, 'backward', 'no', 1)
-                encoders.enc()
-
             case "M":
                 print("...Main Routine Initiated...")
                 MainRoutine.robotmainroutine()
                 pass
 
+            case "F":
+                print("...Continuous Movement and Data Gathering Initiated...")
+                self.last_command = "F"
+                self.controlFlag = True
+
+                # Start a new thread for continuous execution
+                movement_thread = threading.Thread(target=continuous_movement, args=(self,))
+                movement_thread.start()
+
+
             case "S":
+                self.last_command = "S"
+                self.controlFlag = False
                 move.motorStop()
                 print("Okay, Program stopped.")
                 pass
 
             case _:
                 print("The language doesn't matter; what matters is solving problems.")
-
-
-
 
 
 def main(args=None):
