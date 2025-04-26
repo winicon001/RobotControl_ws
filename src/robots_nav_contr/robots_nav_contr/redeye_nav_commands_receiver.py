@@ -26,6 +26,8 @@ class AutoCommandReceiver(Node):
         self.controlFlag = False
         self.last_command = None
 
+        self.publisher = self.create_publisher(String, '/redEye_Arduino_data', 10)  # Publishes to another topic
+
     def continuous_movement(self):
         print("...Continuous Movement and Data Gathering Initiated...")
         while self.controlFlag:
@@ -45,6 +47,11 @@ class AutoCommandReceiver(Node):
         self.get_logger().info(f"Received {msg.data}")
         command = msg.data
 
+        # Simulated Message from Arduino - Arduino not used in RedEye Robot
+        arduino_msg = String()
+        arduino_msg.data = "Hello Everyone, I am here if you need me for Arduino Interface"
+        self.publisher.publish(arduino_msg)
+
         def continuous_movement(self):
             print("...Continuous Movement and Data Gathering Initiated...")
             while self.controlFlag:
@@ -59,6 +66,7 @@ class AutoCommandReceiver(Node):
                 if not self.controlFlag:
                     print("Exiting Continuous Movement and Data Gathering.")
                     pass
+ 
 
         move.setup()
         match command:
