@@ -66,7 +66,7 @@ class ROS2SerialNode(Node):
         while not self.stop_thread:
             data = self.serial_handler.read_from_serial()
             if data:
-                self.get_logger().info(f"Received from Serial: {data}")
+                # self.get_logger().info(f"Received from Serial: {data}")
                 self.serial_data = data  # Store the data for use elsewhere in the project
 
     def use_serial_data(self):

@@ -39,17 +39,16 @@ robotManufacturer = "WiniCon"  # Robot Manufacturer
 #################################################
 # MPU6050 Data YPR
 #################################################
-
+baud = 115200
 
 error_flag = False  # Error detection flag for transfered data
 
 startup_command = "go"
-ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.2:1.0-port0', 9600, timeout=5) #  Corresponding to /ttyUSB1
+ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.2:1.0-port0', baud, timeout=5) #  Corresponding to /ttyUSB1
 
 ser.write(bytes(startup_command.encode("utf-8")))  # Send data to ESP32 to start pulling gyroscope data. This is introduced due to the
                                                    # default MPU6050 sketch which look for a starting command of any character over the serial line.
 
-# Read Data from ESP32
 # Read Data from ESP32
 def read_data():
     values = ser.readline()
@@ -133,7 +132,7 @@ class DataSubscriber(Node):
 
 
     def __init__(self):
-        super().__init__('ESP32_DataReadout')
+        super().__init__('Octavia_Arduino_DataReadout')
 
         # Subscribe to the output topic
         self.subscription = self.create_subscription(
@@ -144,6 +143,14 @@ class DataSubscriber(Node):
         )
 
     def callback(self, msg):
+
+        # Read Unltrasonic Sensor Distance Data from Arduino
+        # The Data is sent from Arduino to ROS2 via the topic /octavia_Arduino_data
+        # and subscribed to by this node - Octavia_Arduino_DataReadout
+
+        dist_ = self.subscription
+        dist_ = msg.data
+        self.get_logger().info(f"Ultrasonic Distance from Arduino: {dist_}")
 
         ##############################################
         ########## Sensors Data ######################
@@ -162,7 +169,7 @@ class DataSubscriber(Node):
             try:
                 if len(esp_values) > 15:
                     self.get_logger().info(f'Received complete data from esp32. Items in the List Received : {data_bundle}')
-                    ULTRASENSOR_DIST = esp_values[0]
+                    ULTRASENSOR_DIST = dist_
                     YAW              = esp_values[1]
                     PITCH            = esp_values[2]
                     ROLL             = esp_values[3]
@@ -183,7 +190,7 @@ class DataSubscriber(Node):
                 else:
                     if len(esp_values) < 16:
                         self.get_logger().warning(f'Warning!. Incomplete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
-                        ULTRASENSOR_DIST = 0.0   
+                        ULTRASENSOR_DIST = dist_  
                         YAW              = 0.0
                         PITCH            = 0.0
                         ROLL             = 0.0
@@ -202,7 +209,7 @@ class DataSubscriber(Node):
 
                 
                 # Assign the values to the class variables
-                self.ULTRASENSOR_DIST = ULTRASENSOR_DIST
+                self.ULTRASENSOR_DIST = dist_
                 self.YAW = YAW
                 self.PITCH = PITCH
                 self.ROLL = ROLL
@@ -274,7 +281,7 @@ class DataSubscriber(Node):
         print("rotation1 : ", rotation1, '|', end = ' ')
         print("rotation2 : ", rotation2)
 
-        print("UltraSensor Distance : ", esp_values[0], '|', end = ' ')
+        print("UltraSensor Distance : ", dist_, '|', end = ' ')
         print("Yaw : ", esp_values[1], '|', end = ' ')
         print("Pitch : ", esp_values[2], '|', end = ' ')
         print("Roll : ", esp_values[3])
