@@ -47,6 +47,7 @@ def connect_to_mssql(sensor_data):
             'PWD=@AutomationIcon;'
             'TrustServerCertificate=yes;'
 
+
         )
         SQL_Logs.info(f"Successfully connected to the MSSQL database! - {DATABASE_NAME}")
         SQL_Logs.info(f"Database Name :  {DATABASE_NAME}")

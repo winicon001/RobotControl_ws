@@ -23,6 +23,7 @@ import rclpy.logging
 from std_msgs.msg import String
 from robots_nav_contr import esp32_serialData
 from robots_nav_contr import Datalog
+from robots_nav_contr import odometry
 
 ################################################################
 
@@ -40,6 +41,8 @@ robotManufacturer = "WiniCon"  # Robot Manufacturer
 # MPU6050 Data YPR
 #################################################
 baud = 115200
+
+robot_data = {}
 
 error_flag = False  # Error detection flag for transfered data
 
@@ -129,8 +132,6 @@ class DataSubscriber(Node):
     totalDist_L = 0
     totalDist_R = 0
 
-
-
     def __init__(self):
         super().__init__('Octavia_Arduino_DataReadout')
 
@@ -169,6 +170,7 @@ class DataSubscriber(Node):
             try:
                 if len(esp_values) > 15:
                     self.get_logger().info(f'Received complete data from esp32. Items in the List Received : {data_bundle}')
+                    self.get_logger().info(f'Received complete data from esp32 : {esp_values}')
                     ULTRASENSOR_DIST = dist_
                     YAW              = esp_values[1]
                     PITCH            = esp_values[2]
@@ -190,6 +192,7 @@ class DataSubscriber(Node):
                 else:
                     if len(esp_values) < 16:
                         self.get_logger().warning(f'Warning!. Incomplete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
+                        self.get_logger().warning(f'Warning!. Data from esp32 : {esp_values}')
                         ULTRASENSOR_DIST = dist_  
                         YAW              = 0.0
                         PITCH            = 0.0
@@ -269,9 +272,89 @@ class DataSubscriber(Node):
         log_Data = [*robot_details,
                     *self.esp_data,
                     ]
+        
+        # ##########################################
+        # Robot Data. This is the data that will be sent to the database
+        # and used for commands, interlocks and control conditions
+        # Also to identify the robot and its type
+        # ###########################################
+        robot_data['robotName'] = robotName
+        robot_data['robotID'] = robotID
+        robot_data['robotType'] = robotType
+        robot_data['robotVersion'] = robotVersion
+        robot_data['robotSerial'] = robotSerial
+        robot_data['robotManufacturer'] = robotManufacturer
+        robot_data['robotData'] = [
+            'ULTRASENSOR_DIST',
+            'YAW',
+            'PITCH',
+            'ROLL',
+            'ENC_TOTAL_COUNT_L',
+            'ENC_TOTAL_COUNT_R',
+            'COUNTER_L',
+            'COUNTER_R',
+            'rotation1',
+            'rotation2',
+            'speed_L',
+            'speed_R',
+            'dist_L',
+            'dist_R',
+            'totalDist_L',
+            'totalDist_R'
+        ]
+        # ##########################################
 
 
+        # ##########################################
+        # Odometry Calculation
+        Odometry_logs.info('Starting Odometry Calculation')
+        # Initialize the odometry with wheel radius and wheel base
+        Routine_Message.info(' Odometry and Sensor Data Collection Node is Starting')
+        odometry.MainRoutine(wheel_base=0.5, wheel_radius=0.1, left_wheel_speed=speed_L, right_wheel_speed=speed_R, dt=0.1)
+
+        # ##########################################
+        # ##########################################
+        # Log the data to the database
+        # This is the data that will be sent to the database
+        # and used for commands, interlocks and control conditions
+        # Also to identify the robot and its type
         Datalog.connect_to_mssql(log_Data)
+        
+        # ##########################################
+
+       # Check the difference in Ultrasonic sensor readings
+
+        # Arduino_ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0', baud, timeout=5) 
+
+        # def ConfinementHandler():
+        #     Arduino_ser.write(b'S')  # Send 'S' to the Arduino
+        #     time.sleep(2)
+        #     Arduino_ser.write(b'B')
+        #     time.sleep(2)
+        #     Arduino_ser.write(b'A')
+
+
+        try:
+            current_time = time.time()
+            reading_difference = 0
+            time_difference = 0
+            if not hasattr(self, 'last_ultrasonic_reading'):
+                self.last_ultrasonic_reading = self.ULTRASENSOR_DIST
+                self.last_reading_time = current_time
+
+                reading_difference = abs(float(self.ULTRASENSOR_DIST) - float(self.last_ultrasonic_reading))
+                time_difference = current_time - self.last_reading_time
+
+            if reading_difference < 5 and time_difference <= 5:
+                self.get_logger().info('Ultrasonic sensor reading difference is less than 5 in the last 5 seconds.')
+                # ConfinementHandler()
+
+            # Update the last reading and time
+            self.last_ultrasonic_reading = float(dist_)
+            self.last_reading_time = current_time
+
+        except ValueError:
+            self.get_logger().error('Error: Invalid ultrasonic sensor reading.')
 
 
         print("enc_L : ", ENC_TOTAL_COUNT_L, '|', end = ' ')
@@ -288,16 +371,14 @@ class DataSubscriber(Node):
 
         print(esp_values)
         return esp_values
+
         
-        
-
-
-
 #########################################################
 ######################## Logs ###########################
 Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')
 Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
 ESP32_Logs = rclpy.logging.get_logger('ESP32 LOGS')
+Odometry_logs = rclpy.logging.get_logger('ODOMETRY LOGS')
 #########################################################
 
 
@@ -316,8 +397,8 @@ def main(args=None):
     rclpy.init(args=args)
     time.sleep(10)
     Routine_Message.info('Emptying Wrong Buffer Data from ESP32')
-    Routine_Message.info('Please wait While ROS Node starts')
 
+    Routine_Message.info('Please wait While ROS Node starts')
     node = DataSubscriber()
     rclpy.spin(node)
     node.destroy_node()
@@ -325,3 +406,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+    
