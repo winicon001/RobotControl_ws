@@ -24,11 +24,21 @@ from std_msgs.msg import String
 from robots_nav_contr import esp32_serialData
 from robots_nav_contr import Datalog
 from robots_nav_contr import odometry
+import serial
 
+global esp_data
 ################################################################
 
-import serial
-global esp_data
+#########################################################
+######################## Logs ###########################
+Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')
+Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
+ESP32_Logs = rclpy.logging.get_logger('ESP32 LOGS')
+Odometry_logs = rclpy.logging.get_logger('ODOMETRY LOGS')
+#########################################################
+
+
+
 
 robotName = "octavia"  # Robot Name
 robotID = "001"  # Robot ID
@@ -153,6 +163,10 @@ class DataSubscriber(Node):
         dist_ = msg.data
         self.get_logger().info(f"Ultrasonic Distance from Arduino: {dist_}")
 
+        # Read Unltrasonic Sensor Distance Data from Arduino
+        # The Data is sent from Arduino to ROS2 via the topic /SmileBot_Arduino_data
+        # and subscribed to by this node - Smilebot_Arduino_DataReadout
+
         ##############################################
         ########## Sensors Data ######################
         esp_data = read_data()
@@ -212,8 +226,8 @@ class DataSubscriber(Node):
 
                 
                 # Assign the values to the class variables
-                self.ULTRASENSOR_DIST = dist_
-                self.YAW = YAW
+                self.ULTRASENSOR_DIST = float(dist_)
+                self.YAW = float(YAW)
                 self.PITCH = PITCH
                 self.ROLL = ROLL
                 self.ENC_TOTAL_COUNT_L = ENC_TOTAL_COUNT_L
@@ -231,7 +245,7 @@ class DataSubscriber(Node):
 
                 # Create a data bundle
                 # ESP32 data
-                self.esp_data = [ULTRASENSOR_DIST, 
+                self.esp_data = [dist_, 
                                  YAW, PITCH, ROLL,
                                 ENC_TOTAL_COUNT_L,
                                 ENC_TOTAL_COUNT_R,
@@ -285,7 +299,7 @@ class DataSubscriber(Node):
         robot_data['robotSerial'] = robotSerial
         robot_data['robotManufacturer'] = robotManufacturer
         robot_data['robotData'] = [
-            'ULTRASENSOR_DIST',
+            'dist_',
             'YAW',
             'PITCH',
             'ROLL',
@@ -310,7 +324,26 @@ class DataSubscriber(Node):
         Odometry_logs.info('Starting Odometry Calculation')
         # Initialize the odometry with wheel radius and wheel base
         Routine_Message.info(' Odometry and Sensor Data Collection Node is Starting')
-        odometry.MainRoutine(wheel_base=0.5, wheel_radius=0.1, left_wheel_speed=speed_L, right_wheel_speed=speed_R, dt=0.1)
+        odometry.MainRoutine(wheel_base=0.5, wheel_radius=0.1, left_wheel_speed=float(self.speed_L), right_wheel_speed=float(self.speed_R), dt=0.1)
+        Odometry_Data = odometry.MainRoutine(wheel_base=0.5, wheel_radius=0.1, left_wheel_speed=float(self.speed_L), right_wheel_speed=float(self.speed_R), dt=0.1)
+
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data}')
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data[0]}')
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data[1]}')
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data[2]}')
+        Odometry_logs.info(f' LeftWheel S : {self.speed_L, self.speed_R}')
+        Odometry_logs.info(f' LeftWheel S : {self.speed_L, self.speed_R}')
+
+
+        # Data to Log   
+        OdoDataExt = [robotID, self.speed_L, self.speed_R]
+        OdometryLog_Data = [*Odometry_Data,
+                    *OdoDataExt,
+                    ]
+
+        Odometry_logs.info(f' LeftWheel S : {OdometryLog_Data}')
+
+
 
         # ##########################################
         # ##########################################
@@ -318,7 +351,9 @@ class DataSubscriber(Node):
         # This is the data that will be sent to the database
         # and used for commands, interlocks and control conditions
         # Also to identify the robot and its type
-        Datalog.connect_to_mssql(log_Data)
+        Datalog.RobotDataLog(log_Data)
+        # Datalog.OdometryDataLog(Odometry_Data)
+        Datalog.OdometryDataLog(OdometryLog_Data)
         
         # ##########################################
 
@@ -371,16 +406,6 @@ class DataSubscriber(Node):
 
         print(esp_values)
         return esp_values
-
-        
-#########################################################
-######################## Logs ###########################
-Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')
-Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
-ESP32_Logs = rclpy.logging.get_logger('ESP32 LOGS')
-Odometry_logs = rclpy.logging.get_logger('ODOMETRY LOGS')
-#########################################################
-
 
 
 def main(args=None):

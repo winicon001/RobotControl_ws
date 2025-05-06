@@ -40,13 +40,14 @@ def MainRoutine(wheel_radius, wheel_base, left_wheel_speed, right_wheel_speed, d
     # Replace these values with actual wheel speeds and time delta
     wheel_radius = 0.1  # meters
     wheel_base = 0.5  # meters
-    left_wheel_speed = 2.0  # m/s
-    right_wheel_speed = 2.5  # m/s
+    # left_wheel_speed = 2.0  # m/s
+    # right_wheel_speed = 2.5  # m/s
     dt = 0.1  # seconds
     odometry = DifferentialDriveOdometry(wheel_radius=0.1, wheel_base=0.5)
-    x, y, theta = odometry.update(left_wheel_speed=2.0, right_wheel_speed=2.5, dt=0.1)
+    x, y, theta = odometry.update(left_wheel_speed, right_wheel_speed, 0.1)
     # Print the updated position and orientation
     OdometryMessage.info(f"Updated Position: ({x:.2f}, {y:.2f}), Orientation: {theta:.2f} rad")
+    return x, y, theta
 
 # Odometry Calculation 
 if __name__ == "__main__":
