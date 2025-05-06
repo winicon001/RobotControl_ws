@@ -23,10 +23,19 @@ import rclpy.logging
 from std_msgs.msg import String
 from robots_nav_contr import esp32_serialData
 from robots_nav_contr import Datalog
-
-################################################################
+from robots_nav_contr import odometry
 
 import serial
+################################################################
+
+
+#########################################################
+######################## Logs ###########################
+Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')
+Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
+ESP32_Logs = rclpy.logging.get_logger('ESP32 LOGS')
+Odometry_logs = rclpy.logging.get_logger('ODOMETRY LOGS')
+#########################################################
 
 robotName = "SmileBot"  # Robot Name
 robotID = "002"  # Robot ID
@@ -38,12 +47,14 @@ robotManufacturer = "WiniCon"  # Robot Manufacturer
 #################################################
 # MPU6050 Data YPR
 #################################################
+baud = 115200  # Baud rate for serial communication
 
+robot_data = {}
 
 error_flag = False  # Error detection flag for transfered data
 
 startup_command = "go"
-ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.2:1.0-port0', 9600, timeout=5) #  Corresponding to /ttyUSB1
+ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.2:1.0-port0', baud, timeout=5) #  Corresponding to /ttyUSB1
 
 ser.write(bytes(startup_command.encode("utf-8")))  # Send data to ESP32 to start pulling gyroscope data. This is introduced due to the
                                                    # default MPU6050 sketch which look for a starting command of any character over the serial line.
@@ -131,7 +142,7 @@ class DataSubscriber(Node):
 
 
     def __init__(self):
-        super().__init__('Arduino_DataReadout')
+        super().__init__('Smilebot_Arduino_DataReadout')
 
         # Subscribe to the output topic
         self.subscription = self.create_subscription(
@@ -142,6 +153,18 @@ class DataSubscriber(Node):
         )
 
     def callback(self, msg):
+
+        # Read Unltrasonic Sensor Distance Data from Arduino
+        # The Data is sent from Arduino to ROS2 via the topic /SmileBot_Arduino_data
+        # and subscribed to by this node - SmileBot_Arduino_DataReadout
+
+        dist_ = self.subscription
+        dist_ = msg.data
+        self.get_logger().info(f"Ultrasonic Distance from Arduino: {dist_}")
+
+        # Read Unltrasonic Sensor Distance Data from Arduino
+        # The Data is sent from Arduino to ROS2 via the topic /SmileBot_Arduino_data
+        # and subscribed to by this node - Smilebot_Arduino_DataReadout
 
         ##############################################
         ########## Sensors Data ######################
@@ -160,7 +183,7 @@ class DataSubscriber(Node):
             try:
                 if len(esp_values) > 15:
                     ESP32_Logs.info(f'Received complete data from esp32. Items in the List Received : {data_bundle}')
-                    ULTRASENSOR_DIST = esp_values[0]
+                    ULTRASENSOR_DIST = dist_
                     YAW              = esp_values[1]
                     PITCH            = esp_values[2]
                     ROLL             = esp_values[3]
@@ -182,7 +205,7 @@ class DataSubscriber(Node):
                     if len(esp_values) < 16:
                         ESP32_Logs.warning(f'Warning!. Incomplete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
                         ESP32_Logs.warning(f'Warning!. Data Received: {esp_values}')
-                        ULTRASENSOR_DIST = 0.0   
+                        ULTRASENSOR_DIST = dist_  
                         YAW              = 0.0
                         PITCH            = 0.0
                         ROLL             = 0.0
@@ -201,7 +224,7 @@ class DataSubscriber(Node):
 
                 
                 # Assign the values to the class variables
-                self.ULTRASENSOR_DIST = ULTRASENSOR_DIST
+                self.ULTRASENSOR_DIST = dist_
                 self.YAW = YAW
                 self.PITCH = PITCH
                 self.ROLL = ROLL
@@ -220,7 +243,7 @@ class DataSubscriber(Node):
 
                 # Create a data bundle
                 # ESP32 data
-                self.esp_data = [ULTRASENSOR_DIST, 
+                self.esp_data = [dist_, 
                                  YAW, PITCH, ROLL,
                                 ENC_TOTAL_COUNT_L,
                                 ENC_TOTAL_COUNT_R,
@@ -234,7 +257,7 @@ class DataSubscriber(Node):
                                 dist_R,
                                 totalDist_L,
                                 totalDist_R
-                                ][:16]  # Limit to 15 items to avoid overflow
+                                ][:16]  # Limit to 16 items to avoid overflow
   
 
             except IndexError:
@@ -261,10 +284,109 @@ class DataSubscriber(Node):
         log_Data = [*robot_details,
                     *self.esp_data,
                     ]
+        
+        # ##########################################
+        # Robot Data. This is the data that will be sent to the database
+        # and used for commands, interlocks and control conditions
+        # Also to identify the robot and its type
+        # ###########################################
+        robot_data['robotName'] = robotName
+        robot_data['robotID'] = robotID
+        robot_data['robotType'] = robotType
+        robot_data['robotVersion'] = robotVersion
+        robot_data['robotSerial'] = robotSerial
+        robot_data['robotManufacturer'] = robotManufacturer
+        robot_data['robotData'] = [
+            'dist_',
+            'YAW',
+            'PITCH',
+            'ROLL',
+            'ENC_TOTAL_COUNT_L',
+            'ENC_TOTAL_COUNT_R',
+            'COUNTER_L',
+            'COUNTER_R',
+            'rotation1',
+            'rotation2',
+            'speed_L',
+            'speed_R',
+            'dist_L',
+            'dist_R',
+            'totalDist_L',
+            'totalDist_R'
+        ]
+        # ##########################################
 
 
-        Datalog.connect_to_mssql(log_Data)
+        # ##########################################
+        # Odometry Calculation
+        Odometry_logs.info('Starting Odometry Calculation')
+        # Initialize the odometry with wheel radius and wheel base
+        Routine_Message.info(' Odometry and Sensor Data Collection Node is Starting')
+        odometry.MainRoutine(wheel_base=0.5, wheel_radius=0.1, left_wheel_speed=float(self.speed_L), right_wheel_speed=float(self.speed_R), dt=0.1)
+        Odometry_Data = odometry.MainRoutine(wheel_base=0.5, wheel_radius=0.1, left_wheel_speed=float(self.speed_L), right_wheel_speed=float(self.speed_R), dt=0.1)
 
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data}')
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data[0]}')
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data[1]}')
+        Odometry_logs.info(f' X, Y, Theta : {Odometry_Data[2]}')
+        Odometry_logs.info(f' LeftWheel S : {self.speed_L, self.speed_R}')
+        Odometry_logs.info(f' LeftWheel S : {self.speed_L, self.speed_R}')
+
+
+        # Data to Log   
+        OdoDataExt = [robotID, self.speed_L, self.speed_R]
+        OdometryLog_Data = [*Odometry_Data,
+                    *OdoDataExt,
+                    ]
+
+        Odometry_logs.info(f' LeftWheel S : {OdometryLog_Data}')
+
+
+        # ##########################################
+        # ##########################################
+        # Log the data to the database
+        # This is the data that will be sent to the database
+        # and used for commands, interlocks and control conditions
+        # Also to identify the robot and its type
+        Datalog.RobotDataLog(log_Data)
+
+        Datalog.RobotDataLog(OdometryLog_Data)
+
+        # ##########################################
+
+       # Check the difference in Ultrasonic sensor readings
+
+        # Arduino_ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0', baud, timeout=5) 
+
+        # def ConfinementHandler():
+        #     Arduino_ser.write(b'S')  # Send 'S' to the Arduino
+        #     time.sleep(2)
+        #     Arduino_ser.write(b'B')
+        #     time.sleep(2)
+        #     Arduino_ser.write(b'A')
+
+
+        try:
+            current_time = time.time()
+            reading_difference = 0
+            time_difference = 0
+            if not hasattr(self, 'last_ultrasonic_reading'):
+                self.last_ultrasonic_reading = self.ULTRASENSOR_DIST
+                self.last_reading_time = current_time
+
+                reading_difference = abs(float(self.ULTRASENSOR_DIST) - float(self.last_ultrasonic_reading))
+                time_difference = current_time - self.last_reading_time
+
+            if reading_difference < 5 and time_difference <= 5:
+                self.get_logger().info('Ultrasonic sensor reading difference is less than 5 in the last 5 seconds.')
+                # ConfinementHandler()
+
+            # Update the last reading and time
+            self.last_ultrasonic_reading = float(dist_)
+            self.last_reading_time = current_time
+
+        except ValueError:
+            self.get_logger().error('Error: Invalid ultrasonic sensor reading.')
 
 
         # Print the data to the console
@@ -282,18 +404,8 @@ class DataSubscriber(Node):
         print("Roll : ", esp_values[3])
 
         print(esp_values)
-        # return data_
+        return esp_values
         
-
-
-
-#########################################################
-######################## Logs ###########################
-Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')
-Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
-ESP32_Logs = rclpy.logging.get_logger('ESP32 LOGS')
-#########################################################
-
 
 
 def main(args=None):

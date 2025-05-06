@@ -9,25 +9,37 @@ from rclpy.node import Node
 from std_msgs.msg import String
 import serial
 import threading
+import time
 
 class SerialHandler:
     def __init__(self, port, baudrate):
-        """Initialize serial communication."""
-        self.ser = serial.Serial(port=port, baudrate=baudrate, timeout=1)
+        try:
+            self.ser = serial.Serial(port, baudrate, timeout=1)
+        except serial.serialutil.SerialException as e:
+            print(f"Error: {e}")
+            self.ser = None
+
+    def read_from_serial(self):
+        if self.ser and self.ser.is_open:
+            try:
+                data = self.ser.readline().decode('utf-8').strip()
+                return data
+            except serial.serialutil.SerialException as e:
+                print(f"Serial read error: {e}")
+                return None
+            except UnicodeDecodeError:
+                print("Error decoding serial data.")
+                return None # Handle invalid characters
+        else:
+            print("Serial port is not open or available.")
+            return None
 
     def send_to_serial(self, data):
         """Send data to the serial port."""
         if self.ser.is_open:
             self.ser.write(data.encode('utf-8'))
 
-    def read_from_serial(self):
-        """Read data from the serial port."""
-        if self.ser.is_open:
-            try:
-                return self.ser.readline().decode('utf-8').strip()
-            except UnicodeDecodeError:
-                return None  # Handle invalid characters gracefully
-
+Arduino_Logs = rclpy.logging.get_logger('ARDUIO LOGS')
 
 class ROS2SerialNode(Node):
     def __init__(self, serial_port, baudrate):
@@ -64,10 +76,15 @@ class ROS2SerialNode(Node):
     def read_serial_data(self):
         """Read from the serial port and store the data."""
         while not self.stop_thread:
-            data = self.serial_handler.read_from_serial()
-            if data:
-                self.get_logger().info(f"Received from Serial: {data}")
-                self.serial_data = data  # Store the data for use elsewhere in the project
+            try:
+                # Read data from the serial port
+                data = self.serial_handler.read_from_serial()
+                if data:
+                    # self.get_logger().info(f"Received from Serial: {data}")
+                    self.serial_data = data  # Store the data for use elsewhere in the project
+            except serial.serialutil.SerialException:
+                Arduino_Logs.info("Serial port not available. Retrying...")
+                time.sleep(1)  # Wait before retrying
 
     def use_serial_data(self):
         """Use the stored serial data elsewhere in the project."""
