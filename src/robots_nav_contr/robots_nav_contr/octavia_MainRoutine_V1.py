@@ -25,8 +25,6 @@ from robots_nav_contr import esp32_serialData
 from robots_nav_contr import Datalog
 from robots_nav_contr import odometry
 import serial
-from filterpy.kalman import KalmanFilter
-import numpy as np
 
 global esp_data
 ################################################################
@@ -146,8 +144,6 @@ class DataSubscriber(Node):
 
     def __init__(self):
         super().__init__('Octavia_Arduino_DataReadout')
-        # Initialise esp_data
-        self.esp_data = []
 
         # Subscribe to the output topic
         self.subscription = self.create_subscription(
@@ -156,33 +152,6 @@ class DataSubscriber(Node):
             self.callback,
             10
         )
-        # Initialize Kalman filters for each component of esp_data
-        self.kalman_filters = [self.create_kalman_filter() for _ in range(16)]
-
-    def create_kalman_filter(self):
-        """Create and return a Kalman filter instance."""
-        kf = KalmanFilter(dim_x=2, dim_z=1)
-        kf.x = np.array([0., 0.])  # Initial state (position and velocity)
-        kf.F = np.array([[1., 1.], [0., 1.]])  # State transition matrix
-        kf.H = np.array([[1., 0.]])  # Measurement function
-        kf.P *= 1000.  # Covariance matrix
-        kf.R = 5  # Measurement noise
-        kf.Q = np.array([[0.1, 0.], [0., 0.1]])  # Process noise
-        return kf
-
-    def apply_kalman_filter(self, data):
-        """Apply Kalman filter to the data."""
-        filtered_data = []
-        for i, value in enumerate(data):
-            try:
-                value = float(value)  # Ensure the value is a float
-                self.kalman_filters[i].predict()
-                self.kalman_filters[i].update(value)
-                filtered_data.append(self.kalman_filters[i].x[0])  # Append the filtered value
-            except ValueError:
-                self.get_logger().warning(f"Invalid data value: {value}. Skipping Kalman filter.")
-                filtered_data.append(0.0)  # Default value for invalid data
-        return filtered_data
 
     def callback(self, msg):
 
@@ -190,17 +159,13 @@ class DataSubscriber(Node):
         # The Data is sent from Arduino to ROS2 via the topic /octavia_Arduino_data
         # and subscribed to by this node - Octavia_Arduino_DataReadout
 
-        # Initialize variables with default values
-        YAW = PITCH = ROLL = ENC_TOTAL_COUNT_L = ENC_TOTAL_COUNT_R = COUNTER_L = COUNTER_R = 0.0
-        rotation1 = rotation2 = speed_L = speed_R = dist_L = dist_R = totalDist_L = totalDist_R = 0.0
-
         dist_ = self.subscription
         dist_ = msg.data
         self.get_logger().info(f"Ultrasonic Distance from Arduino: {dist_}")
 
         # Read Unltrasonic Sensor Distance Data from Arduino
-        # The Data is sent from Arduino to ROS2 via the topic /Octavia_Arduino_data
-        # and subscribed to by this node - Octavia_Arduino_DataReadout
+        # The Data is sent from Arduino to ROS2 via the topic /SmileBot_Arduino_data
+        # and subscribed to by this node - Smilebot_Arduino_DataReadout
 
         ##############################################
         ########## Sensors Data ######################
@@ -242,11 +207,60 @@ class DataSubscriber(Node):
                     if len(esp_values) < 16:
                         self.get_logger().warning(f'Warning!. Incomplete MPU6050 data from esp32. Items in the List Received : {data_bundle}')
                         self.get_logger().warning(f'Warning!. Data from esp32 : {esp_values}')
-                        self.get_logger().error(f"Insufficient data received from ESP32. Expected 16 values, got {len(esp_values)}.")
-                        # Assign default values to the variables
-                        # This is to prevent the robot from crashing
-                        # Provide default values for missing data
-                        esp_values += ['0'] * (16 - len(esp_values))  # Pad with default values (e.g., '0')
+                        ULTRASENSOR_DIST = dist_  
+                        YAW              = 0.0
+                        PITCH            = 0.0
+                        ROLL             = 0.0
+                        ENC_TOTAL_COUNT_L = 0.0
+                        ENC_TOTAL_COUNT_R = 0.0
+                        COUNTER_L         = 0.0
+                        COUNTER_R         = 0.0
+                        rotation1         = 0.0
+                        rotation2         = 0.0         
+                        speed_L           = 0.0
+                        speed_R           = 0.0
+                        dist_L            = 0.0
+                        dist_R            = 0.0
+                        totalDist_L       = 0.0
+                        totalDist_R       = 0.0
+
+                
+                # Assign the values to the class variables
+                self.ULTRASENSOR_DIST = float(dist_)
+                self.YAW = float(YAW)
+                self.PITCH = PITCH
+                self.ROLL = ROLL
+                self.ENC_TOTAL_COUNT_L = ENC_TOTAL_COUNT_L
+                self.ENC_TOTAL_COUNT_R = ENC_TOTAL_COUNT_R
+                self.COUNTER_L = COUNTER_L
+                self.COUNTER_R = COUNTER_R
+                self.rotation1 = rotation1
+                self.rotation2 = rotation2
+                self.speed_L = speed_L
+                self.speed_R = speed_R
+                self.dist_L = dist_L
+                self.dist_R = dist_R
+                self.totalDist_L = totalDist_L
+                self.totalDist_R = totalDist_R  
+
+                # Create a data bundle
+                # ESP32 data
+                self.esp_data = [dist_, 
+                                 YAW, PITCH, ROLL,
+                                ENC_TOTAL_COUNT_L,
+                                ENC_TOTAL_COUNT_R,
+                                COUNTER_L,
+                                COUNTER_R,
+                                rotation1,
+                                rotation2,  
+                                speed_L,
+                                speed_R,
+                                dist_L,
+                                dist_R,
+                                totalDist_L,
+                                totalDist_R
+                                ][:16]  # Limit to 16 items to avoid overflow
+  
 
             except IndexError:
                 self.get_logger().error('Error: IndexError occurred while accessing MPU6050 data.')
@@ -255,68 +269,7 @@ class DataSubscriber(Node):
             if not esp_data or len(esp_data) < 4:
                 self.get_logger().warning('Warning: Data bundle from MPU6050 is empty or missing items.')
 
-        
-        # Apply Kalman filter to the ESP32 data    
-        filtered_esp_values = self.apply_kalman_filter(esp_values[:16])
-        self.get_logger().info(f'Filtered ESP32 data: {filtered_esp_values}')
 
-        # Assign filtered values to the class variables
-        self.ULTRASENSOR_DIST = dist_
-        self.YAW = filtered_esp_values[1]
-        self.PITCH = filtered_esp_values[2]
-        self.ROLL = filtered_esp_values[3]
-        self.ENC_TOTAL_COUNT_L = filtered_esp_values[4]
-        self.ENC_TOTAL_COUNT_R = filtered_esp_values[5]
-        self.COUNTER_L = filtered_esp_values[6]
-        self.COUNTER_R = filtered_esp_values[7]
-        self.rotation1 = filtered_esp_values[8]
-        self.rotation2 = filtered_esp_values[9]
-        self.speed_L = filtered_esp_values[10]
-        self.speed_R = filtered_esp_values[11]
-        self.dist_L = filtered_esp_values[12]
-        self.dist_R = filtered_esp_values[13]
-        self.totalDist_L = filtered_esp_values[14]
-        self.totalDist_R = filtered_esp_values[15]
-        # Print the filtered values
-        self.get_logger().info(f'Filtered ESP32 data: {self.esp_data}')
-
-
-        # ESP32 data
-        self.esp_data = [dist_, 
-                        YAW, PITCH, ROLL,
-                        ENC_TOTAL_COUNT_L,
-                        ENC_TOTAL_COUNT_R,
-                        COUNTER_L,
-                        COUNTER_R,
-                        rotation1,
-                        rotation2,  
-                        speed_L,
-                        speed_R,
-                        dist_L,
-                        dist_R,
-                        totalDist_L,
-                        totalDist_R
-                        ][:16]  # Limit to 16 items to avoid overflow
-
-        # Filtered ESP32 data
-        self.filteredData = [self.ULTRASENSOR_DIST,
-                        self.YAW,
-                        self.PITCH,
-                        self.ROLL,
-                        self.ENC_TOTAL_COUNT_L,
-                        self.ENC_TOTAL_COUNT_R,
-                        self.COUNTER_L,
-                        self.COUNTER_R,
-                        self.rotation1,
-                        self.rotation2,
-                        self.speed_L,
-                        self.speed_R,
-                        self.dist_L,
-                        self.dist_R,
-                        self.totalDist_L,
-                        self.totalDist_R
-                        ] 
-    
         # Generate Robot Details
         robot_details = [robotName,
                          robotID,
@@ -326,6 +279,7 @@ class DataSubscriber(Node):
                          robotManufacturer]
 
         ##############################################
+        # self.get_logger().info(f'Data from Arduino {self.arduino_data}')
         self.get_logger().info(f'Data from ESP32 {self.esp_data}')
 
         # Data to Log   

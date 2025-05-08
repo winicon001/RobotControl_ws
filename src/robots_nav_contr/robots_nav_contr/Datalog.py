@@ -19,13 +19,11 @@
         # It also includes error handling to catch any exceptions that occur during the database connection or data insertion process.
 
 
-
 import sqlite3
 import pyodbc
 import datetime
 from datetime import date
 import rclpy.logging
-
 
 #########################################################
 ######################## Logs ###########################
@@ -90,6 +88,22 @@ def RobotDataLog(sensor_data):
                         dist_R FLOAT,
                         totalDist_L FLOAT,
                         totalDist_R FLOAT,
+                        fil_ULTRASENSOR_DIST FLOAT,
+                        fil_YAW FLOAT,
+                        fil_PITCH FLOAT,
+                        fil_ROLL FLOAT,
+                        fil_ENC_TOTAL_COUNT_L FLOAT,
+                        fil_ENC_TOTAL_COUNT_R FLOAT,
+                        fil_COUNTER_L FLOAT,
+                        fil_COUNTER_R FLOAT,
+                        fil_rotation1 FLOAT,
+                        fil_rotation2 FLOAT,
+                        fil_speed_L FLOAT,
+                        fil_speed_R FLOAT,
+                        fil_dist_L FLOAT,
+                        fil_dist_R FLOAT,
+                        fil_totalDist_L FLOAT,
+                        fil_totalDist_R FLOAT,
                         timestamp DATETIME DEFAULT GETDATE()
                     )
                 END
@@ -100,7 +114,7 @@ def RobotDataLog(sensor_data):
 
         # Insert sensor data into the table
         cursor.execute(
-            f"INSERT INTO {table_name} (robotName, robotID, robotType, robotVersion, robotSerial, robotManufacturer, ULTRASENSOR_DIST, YAW, PITCH, ROLL, ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2, speed_L, speed_R, dist_L, dist_R, totalDist_L, totalDist_R, timestamp) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)"
+            f"INSERT INTO {table_name} (robotName, robotID, robotType, robotVersion, robotSerial, robotManufacturer, ULTRASENSOR_DIST, YAW, PITCH, ROLL, ENC_TOTAL_COUNT_L, ENC_TOTAL_COUNT_R, COUNTER_L, COUNTER_R, rotation1, rotation2, speed_L, speed_R, dist_L, dist_R, totalDist_L, totalDist_R, fil_ULTRASENSOR_DIST, fil_YAW, fil_PITCH, fil_ROLL, fil_ENC_TOTAL_COUNT_L, fil_ENC_TOTAL_COUNT_R, fil_COUNTER_L, fil_COUNTER_R, fil_rotation1, fil_rotation2, fil_speed_L, fil_speed_R, fil_dist_L, fil_dist_R, fil_totalDist_L, fil_totalDist_R, timestamp) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)"
             , sensor_data)
         
         # Commit changes and close the connection
