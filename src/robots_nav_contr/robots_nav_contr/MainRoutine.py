@@ -33,6 +33,7 @@ import rclpy.logging
 ################################################################
 
 import serial
+import time
 global esp_data
 
 robotName = "redEye"  # Robot Name
@@ -50,12 +51,12 @@ speed = 50  # Robot Speed
 #################################################
 # MPU6050 Data YPR
 #################################################
-
+baud = 115200  # Baud rate for serial communication
 
 error_flag = False  # Error detection flag for transfered data
 
 startup_command = "go"
-ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.4:1.0-port0', 9600, timeout=5) #  Corresponding to /ttyUSB1
+ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.3:1.0-port0', baud, timeout=10) #  Corresponding to /ttyUSB1
 
 ser.write(bytes(startup_command.encode("utf-8")))  # Send data to ESP32 to start pulling gyroscope data. This is introduced due to the
                                                    # default MPU6050 sketch which look for a starting command of any character over the serial line.
@@ -63,8 +64,8 @@ ser.write(bytes(startup_command.encode("utf-8")))  # Send data to ESP32 to start
 
 # Read Data from ESP32
 def read_data():
+    # values = arduinosensorsdata.reading.checkdata()
     values = ser.readline()
-
 
     if isinstance(values, bytes):
         try:
@@ -142,7 +143,7 @@ class DataSubscriber(Node):
 
 
     def __init__(self):
-        super().__init__('ESP32_DataReadout')
+        super().__init__('RedEye_ESP32_DataReadout')
 
         # Subscribe to the output topic
         self.subscription = self.create_subscription(
@@ -271,9 +272,22 @@ class DataSubscriber(Node):
         log_Data = [*robot_details,
                     *self.esp_data,
                     ]
+        
+        # ############################################
+        # Log the data to the database every 3 seconds
+        # ############################################
+        # Initialize a variable to store the last logged time
+        # last_logged_time = 0
 
+        # # Get the current time
+        # current_time = time.time()
 
-        Datalog.connect_to_mssql(log_Data)
+        # # Check if the time since the last logged data is greater than or equal to 3 seconds
+        # if current_time - last_logged_time >= 3:
+        #     Datalog.connect_to_mssql(log_Data)
+        #     last_logged_time = current_time
+        Datalog.connect_to_mssql(log_Data)      
+        # ############################################
 
 
         print("enc_L : ", ENC_TOTAL_COUNT_L, '|', end = ' ')
@@ -297,71 +311,19 @@ def robotmainroutine():
 
     # Encoders Readings
     arduino_read_values = arduinosensorsdata.reading.checkdata()
-    # dist = arduino_read_values[0]
-    # yaw = float(arduino_read_values[1])
-    # pitch = float(arduino_read_values[2])
-    # row = float(arduino_read_values[3])
-
-    
-
-
-    # enc1 = encoders.enc()[0]       # Left Encoder instantaneous 
-    # enc1Total = encoders.enc()[1]  # Left Encoder total ticks coutns
-    # Rev_L = encoders.enc()[2]      # Number of Revolutions for Left wheel
-    # dist_L = encoders.enc()[3]     # Total distance travelled for Left Wheel
-    # enc2 = encoders.enc()[4]       # Right Encoder instantaneous counts
-    # enc2Total = encoders.enc()[5]  # Right Encoder total ticks count
-    # # Rev_R = encoders.enc()[6]      # Number of Revolutions for Right wheel
-    # # dist_R = encoders.enc()[7]     # Total distance travelled for Right Wheel
-
-    # # Sensors Data Processing
-    # abs_yaw = abs(yaw)
-    
-    # # if (dist_L == 0.0 and dist_R == 0.0):
-    # #     init_yaw = abs_yaw
-    # # true_yaw = round((abs(init_yaw - abs_yaw)), 2)
-
-    # # Remove String character from Sensor readings from ESP32
-    # numeric_part = ''.join(char for char in dist if char.isdigit() or char == '.')
-
-    # # Remove white space from Sensor readings from ESP32
-    # clean_part = numeric_part.strip().replace(' ', '')
-
-    # # Convert Sensor readings from ESP32 to float data type
-    # obstacle_dist = float(clean_part)
-    
-    # def data():
-    #     print('obstacle at: ', obstacle_dist, '|', end = ' ')
-    #     print('Yaw:', yaw, '| ', end = ' ')
-    #     print('abs_Yaw:', abs_yaw, '| ', end = ' ')
-    #     # print('true_Yaw:', true_yaw, '| ', end = ' ')
-    #     print('Pitch: ', pitch, '| ', end = '')
-    #     print('Row: ', row, '| ', end = '')
-        # print('enc1_', enc1,'| ', end= '')
-        # print('enc1Total', enc1Total,'|', end= '')
-        # print('Rev_L', Rev_L,'| ', end= '')
-        # print('dist_L', dist_L,'| ', end= '')
-        # print('enc2', enc2,'| ', end= '')
-        # print('enc2Total', enc2Total,'| ', end= '')
-        # print('Rev_R', Rev_R,'| ', end= '')
-        # print('dist_R', dist_R)
-
 
     # Change obstacle distance based on environmental features
     if DataSubscriber.ULTRASENSOR_DIST <= 25.0:
         move.move(speed, direction="backward", turn="left")
-        # data()
+
         return
 
     else:
         move.move(speed, direction = "forward", turn = "")
-        # init_yaw = true_yaw
+        time.sleep(2)
         # move.move(speed, direction = "forward", turn = "right")
-        # data()
-        
 
-
-
+    
 #########################################################
 ######################## Logs ###########################
 Routine_Message = rclpy.logging.get_logger('ROUTINE MESSAGE')

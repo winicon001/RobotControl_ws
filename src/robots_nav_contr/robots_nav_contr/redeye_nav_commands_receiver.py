@@ -28,20 +28,6 @@ class AutoCommandReceiver(Node):
 
         self.publisher = self.create_publisher(String, '/redEye_Arduino_data', 10)  # Publishes to another topic
 
-    def continuous_movement(self):
-        print("...Continuous Movement and Data Gathering Initiated...")
-        while self.controlFlag:
-            MainRoutine.robotmainroutine()
-            
-            enc1, enc1Total, Rev_L, dist_L = encoders.enc()
-            time.sleep(0.1)
-
-            # Allow ROS to process new messages
-            rclpy.spin_once(self, timeout_sec=0.1)
-
-            if not self.controlFlag:
-                print("Exiting Continuous Movement and Data Gathering.")
-                break
 
     def receiver_callback(self, msg: String):
         self.get_logger().info(f"Received {msg.data}")
@@ -49,7 +35,9 @@ class AutoCommandReceiver(Node):
 
         # Simulated Message from Arduino - Arduino not used in RedEye Robot
         arduino_msg = String()
-        arduino_msg.data = "Hello Everyone, I am here if you need me for Arduino Interface"
+        self.count = 0
+        # arduino_msg_count += self.count
+        arduino_msg.data = f"Hello Everyone, I am here if you need me for Arduino Interface + {self.count}"
         self.publisher.publish(arduino_msg)
 
         def continuous_movement(self):

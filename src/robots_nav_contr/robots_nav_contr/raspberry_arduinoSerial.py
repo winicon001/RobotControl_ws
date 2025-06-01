@@ -11,12 +11,14 @@ global command
 
 #ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', 9600, timeout=5)
 
+baud = 115200
+
 class AutoCommandReceiver(Node):
     def __init__(self):
         super().__init__("robot_command_receiver")
         self.get_logger().info("...Node initiated. Robot # Listening to robot_auto_command Node...")
         self.receiver_ = self.create_subscription(String, '/auto_command', self.receiver_callback, 10) # Message type to receive, name of the topic to subscribe to and the buffer size
-        self.ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', 9600, timeout=5)
+        self.ser = serial.Serial('/dev/serial/by-path/platform-fd500000.pcie-pci-0000:01:00.0-usb-0:1.1:1.0-port0', baud, timeout=5)
         
     def receiver_callback(self, msg):
         self.get_logger().info(f"Received {msg.data}")

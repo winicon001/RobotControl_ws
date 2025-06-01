@@ -1,6 +1,6 @@
 # File name   : Datalog.py
 # Description : MSSQL Database Connection and Data Insertion
-# Product     : octavia  
+# Product     : redEye  
 # E-mail      : winicon@live.com
 # Author      : Semiu ADEBAYO
 # Date        : 2025/04/04
